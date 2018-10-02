@@ -1,0 +1,40 @@
+{
+  "name": "tape",
+  "version": "2.0.9",
+  "description": "Javascript audio library for the modern web.",
+  "keywords": [
+    "tape",
+    "tape.js",
+    "audio",
+    "sound",
+    "web audio",
+    "webaudio",
+    "browser",
+    "html5",
+    "html5 audio",
+    "audio sprite",
+    "audiosprite"
+  ],
+  "author": "Alexander Leon <alexjleon@protonmail.com> (http://alexjleon.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goldfire/tape.js.git"
+  },
+  "scripts": {
+    "build": "cat src/tape.core.js src/offline-tape.core.js src/plugins/reverb.js src/plugins/gain.js src/plugins/distortion.js src/plugins/biquad-filter.js src/instruments/synth-one.js src/instruments/sample-player.js src/instruments/offline-instruments/offline-synth-one.js src/plugins/offline-plugins/offline-distortion.js src/plugins/offline-plugins/offline-eq.js src/plugins/offline-plugins/offline-gain.js src/plugins/offline-plugins/offline-reverb.js stretch/buffered-pv.js stretch/cbuffer.js stretch/dsp.js stretch/PV_fast_5.js stretch/waa-player.js | uglifyjs -o dist/tape.core.min.js"
+  },
+  "devDependencies": {
+    "uglify-es": "^3.3.9"
+  },
+  "main": "dist/tape.js",
+  "license": "MIT",
+  "files": [
+    "src",
+    "dist/tape.js",
+    "dist/tape.min.js",
+    "dist/tape.core.min.js",
+    "dist/biquad-filter.min.js",
+    "LICENSE.md"
+  ],
+  "dependencies": {}
+}
