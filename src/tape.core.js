@@ -2283,11 +2283,15 @@
         }
 
         if (self._vocode && cache[url]) {
-            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate).then(function(waaBuffer) {
+            self._duration = cache[url].vocoder.duration;
+            loadSound(self, cache[url].vocoder);
+            /*
+            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate, _pv).then(function(waaBuffer) {
                 cache[self._src].vocoder = waaBuffer;
                 self._cachedPreVocodedBuffer = waaBuffer;
                 loadSound(self, waaBuffer);
             })
+            */
         }
 
         if (/^data:[^;]+;base64,/.test(url)) {
@@ -2356,7 +2360,7 @@
         var success = function(buffer) {
             if (buffer && self._sounds.length > 0) {
                 if (self._vocode) {
-                    WAAPlayer(self.machine.ctx, buffer, 2048, 4096, self._rate).then(function(waaBuffer) {
+                    WAAPlayer(buffer, 2048, 4096, self._rate, _pv).then(function(waaBuffer) {
                         cache[self._src] = {main: buffer, vocoder: waaBuffer};
                         self._cachedBuffer = buffer;
                         self._cachedPreVocodedBuffer = waaBuffer;
