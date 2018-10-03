@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="" />
+    <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/gain-processor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tape.core.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape.core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stretch/waa-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/stretch/waa-player.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,8 +24,36 @@
       <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tape.core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="508" column="45" lean-forward="true" selection-start-line="508" selection-start-column="45" selection-end-line="508" selection-end-column="45" />
+            <state relative-caret-position="160">
+              <caret line="505" column="27" lean-forward="true" selection-start-line="505" selection-start-column="27" selection-end-line="505" selection-end-column="27" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="21" column="7" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="7" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gain-processor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gain-processor.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="offline-tape.core.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -40,8 +75,8 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="163">
+              <caret line="23" column="557" selection-start-line="23" selection-start-column="557" selection-end-line="23" selection-end-column="557" />
             </state>
           </provider>
         </entry>
@@ -50,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/dist/tape.core.min.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret column="8401" selection-start-column="8401" selection-end-column="8401" />
+              <caret column="8477" selection-start-column="8477" selection-end-column="8477" />
             </state>
           </provider>
         </entry>
@@ -59,24 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cache[url</find>
-      <find>cachedprev</find>
-      <find>loadbuffer</find>
-      <find>init:</find>
-      <find>cachedbuffer</find>
-      <find>if (self._voc</find>
-      <find>[0]</find>
-      <find>self._sprite</find>
-      <find>sprite</find>
-      <find>sprite =</find>
-      <find>the global</find>
-      <find>.play</find>
-      <find>seek:</find>
-      <find>console</find>
-      <find>play:</find>
-      <find>play(</find>
-      <find>stop:</find>
-      <find>stop</find>
       <find>buffersource.st</find>
       <find>interva</find>
       <find>_refreshBuffer</find>
@@ -89,11 +106,34 @@
       <find>_desti</find>
       <find>_destination =</find>
       <find>huh..</find>
+      <find>interval</find>
+      <find>-</find>
+      <find>interval =</find>
+      <find>_vocode</find>
+      <find>_vocode</find>
+      <find>new audioconte</find>
+      <find>._setup</find>
+      <find>new audiocont</find>
+      <find>offlinectx2</find>
+      <find>self._vocode</find>
+      <find>.main</find>
+      <find>waapl</find>
+      <find>nodetoco</find>
+      <find>.create(</find>
+      <find>update:</find>
+      <find>selff</find>
+      <find>waapla</find>
+      <find>_pv</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/gain-processor.js" />
+        <option value="$PROJECT_DIR$/stretch/waa-player.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/tape.core.js" />
       </list>
@@ -112,6 +152,7 @@
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -140,6 +181,11 @@
               <item name="tapejs3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tapejs3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tapejs3" type="462c0819:PsiDirectoryNode" />
+              <item name="stretch" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -180,24 +226,25 @@
       <option name="presentableId" value="Default" />
       <updated>1538495109690</updated>
       <workItem from="1538495111210" duration="4702000" />
-      <workItem from="1538505841082" duration="5451000" />
+      <workItem from="1538505841082" duration="10373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10153000" />
+    <option name="totallyTimeSpent" value="15075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32969698" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32969698" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -240,17 +287,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/tape.core.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret column="8401" selection-start-column="8401" selection-end-column="8401" />
+          <caret column="8477" selection-start-column="8477" selection-end-column="8477" />
         </state>
       </provider>
     </entry>
@@ -263,10 +303,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gain-processor.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="23" column="557" selection-start-line="23" selection-start-column="557" selection-end-line="23" selection-end-column="557" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/tape.core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="508" column="45" lean-forward="true" selection-start-line="508" selection-start-column="45" selection-end-line="508" selection-end-column="45" />
+        <state relative-caret-position="160">
+          <caret line="505" column="27" lean-forward="true" selection-start-line="505" selection-start-column="27" selection-end-line="505" selection-end-column="27" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

@@ -19,6 +19,9 @@
      * Create the global controller. All contained methods and properties apply
      * to all sounds that are currently playing or will be in the future.
      */
+
+    var _pv = new BufferedPV(2048);
+
     var TapeMachineGlobal = function() {
         this.init();
     };
@@ -182,7 +185,7 @@
          * @return {TapeMachine}
          */
         _setup: function() {
-            var self = this || TapeMachine;
+            var self = this;
 
             // Keeps track of the suspend/resume state of the AudioContext.
             self.state = self.ctx ? self.ctx.state || 'running' : 'running';
@@ -208,7 +211,6 @@
                     self.noAudio = true;
                 }
             }
-
             // Test to make sure audio isn't disabled in Internet Explorer.
             try {
                 var test = new Audio();
@@ -221,6 +223,7 @@
             if (!self.noAudio) {
                 self._setupCodecs();
             }
+
 
             return self;
         },
@@ -500,7 +503,7 @@
             self._pool = o.pool || 5;
             self._preload = (typeof o.preload === 'boolean') ? o.preload : true;
             self._rate = o.rate || 1;
-            self._vocode = null // o.vocode;
+            self._vocode = o.vocode;
             self._sprite = o.sprite || {};
             self._src = (typeof o.src !== 'string') ? o.src : [o.src];
             self._volume = o.volume !== undefined ? o.volume : 1;
@@ -561,7 +564,7 @@
             }
 
             if (cache[self._src]) {
-                self._cachedBuffer = cache[self._src].main;
+                self._cachedBuffer = cache[self._src];
                 self._cachedPreVocodedBuffer = cache[self._src].vocoder;
             }
 
@@ -909,6 +912,9 @@
             }
             if (o.destination) {
                 self._destination = o.destination.node;
+            }
+            if (o.pitchShift) {
+                self.effects[0].transpose = o.pitchShift;
             }
         },
 
@@ -2047,7 +2053,7 @@
 
             // Setup the buffer source for playback.
             sound._node.bufferSource = self.machine.ctx.createBufferSource();
-            sound._node.bufferSource.buffer = cache[self._src].vocoder || cache[self._src].main;
+            sound._node.bufferSource.buffer = cache[self._src];
 
             // Connect to the correct node.
             if (sound._panner) {
@@ -2266,22 +2272,14 @@
         var url = self._src;
 
         // Check if the buffer has already been cached and use it instead.
-        if (cache[url] && !self._vocode) {
+        if (cache[url]) {
             // Set the duration from the cache.
-            self._duration = cache[url].main.duration;
+            self._duration = cache[url].duration;
 
             // Load the sound into this Reel.
-            loadSound(self, cache[url].main);
+            loadSound(self, cache[url]);
 
             return;
-        }
-
-        if (self._vocode && cache[url]) {
-            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate).then(function(waaBuffer) {
-                cache[self._src].vocoder = waaBuffer;
-                self._cachedPreVocodedBuffer = waaBuffer;
-                loadSound(self, waaBuffer);
-            })
         }
 
         if (/^data:[^;]+;base64,/.test(url)) {
@@ -2350,14 +2348,14 @@
         var success = function(buffer) {
             if (buffer && self._sounds.length > 0) {
                 if (self._vocode) {
-                    WAAPlayer(self.machine.ctx, buffer, 2048, 4096, self._rate).then(function(waaBuffer) {
-                        cache[self._src] = {main: buffer, vocoder: waaBuffer};
+                    WAAPlayer(self.machine.ctx, buffer, 2048, 4096, self._rate, _pv).then(function(waaBuffer) {
+                        cache[self._src] = waaBuffer;
                         self._cachedBuffer = buffer;
                         self._cachedPreVocodedBuffer = waaBuffer;
                         loadSound(self, waaBuffer);
                     })
                 } else {
-                    cache[self._src] = {main: buffer, vocoder: null};
+                    cache[self._src] = buffer;
                     self._cachedBuffer = buffer;
                     self._cachedPreVocodedBuffer = null;
                     loadSound(self, buffer);
@@ -2427,6 +2425,14 @@
                 TapeMachine4.usingWebAudio = false;
                 TapeMachine5.usingWebAudio = false;
             }
+            /*
+            TapeMachine0.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine1.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine2.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine3.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine4.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine5.ctx.audioWorklet.addModule('gain-processor.js');
+            */
         } catch(e) {
             TapeMachine0.usingWebAudio = false;
             TapeMachine1.usingWebAudio = false;
@@ -2538,11 +2544,9 @@
                 for (var i = 0; i < self.effects.length; i++) {
                     nextEffect = self.effects[i];
                     nodeToConnect.disconnect();
-                    console.log('connect nexteffect update')
                     nodeToConnect.connect(nextEffect.input);
                     nodeToConnect = self.effects[i].output;
                 }
-                console.log('connect on update')
                 nodeToConnect.connect(self.machine.masterGain);
             }
 
