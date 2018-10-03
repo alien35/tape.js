@@ -564,7 +564,7 @@
             }
 
             if (cache[self._src]) {
-                self._cachedBuffer = cache[self._src];
+                self._cachedBuffer = cache[self._src].main;
                 self._cachedPreVocodedBuffer = cache[self._src].vocoder;
             }
 
@@ -2053,7 +2053,7 @@
 
             // Setup the buffer source for playback.
             sound._node.bufferSource = self.machine.ctx.createBufferSource();
-            sound._node.bufferSource.buffer = cache[self._src];
+            sound._node.bufferSource.buffer = cache[self._src].vocoder || cache[self._src].main;
 
             // Connect to the correct node.
             if (sound._panner) {
@@ -2272,14 +2272,22 @@
         var url = self._src;
 
         // Check if the buffer has already been cached and use it instead.
-        if (cache[url]) {
+        if (cache[url] && !self._vocode) {
             // Set the duration from the cache.
-            self._duration = cache[url].duration;
+            self._duration = cache[url].main.duration;
 
             // Load the sound into this Reel.
-            loadSound(self, cache[url]);
+            loadSound(self, cache[url].main);
 
             return;
+        }
+
+        if (self._vocode && cache[url]) {
+            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate).then(function(waaBuffer) {
+                cache[self._src].vocoder = waaBuffer;
+                self._cachedPreVocodedBuffer = waaBuffer;
+                loadSound(self, waaBuffer);
+            })
         }
 
         if (/^data:[^;]+;base64,/.test(url)) {
@@ -2348,14 +2356,14 @@
         var success = function(buffer) {
             if (buffer && self._sounds.length > 0) {
                 if (self._vocode) {
-                    WAAPlayer(self.machine.ctx, buffer, 2048, 4096, self._rate, _pv).then(function(waaBuffer) {
-                        cache[self._src] = waaBuffer;
+                    WAAPlayer(self.machine.ctx, buffer, 2048, 4096, self._rate).then(function(waaBuffer) {
+                        cache[self._src] = {main: buffer, vocoder: waaBuffer};
                         self._cachedBuffer = buffer;
                         self._cachedPreVocodedBuffer = waaBuffer;
                         loadSound(self, waaBuffer);
                     })
                 } else {
-                    cache[self._src] = buffer;
+                    cache[self._src] = {main: buffer, vocoder: null};
                     self._cachedBuffer = buffer;
                     self._cachedPreVocodedBuffer = null;
                     loadSound(self, buffer);
