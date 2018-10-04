@@ -64,28 +64,15 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
 
         var gainNode = offlineCtx2.createGain();
 
-        gainNode.gain.setValueAtTime(0, 0);
-        gainNode.gain.linearRampToValueAtTime(1, 0.3);
 
-        var _eq = new EqThree({
-            hi: 1,
-            lo: 1,
-            mid: 1,
-            ctx: offlineCtx2
-        });
-
-        gainNode.connect(_eq.input);
-        _eq.output.connect(offlineCtx2.destination);
-
+        gainNode.connect(offlineCtx2.destination);
 
         _node.connect(offlineCtx.destination);
 
-        gainNode.connect(_eq.input);
-        _eq.output.connect(offlineCtx2.destination);
+        gainNode.connect(offlineCtx2.destination);
 
         var gainNode2 = offlineCtx2.createGain();
         gainNode2.gain.setValueAtTime(1, 0);
-        gainNode2.gain.linearRampToValueAtTime(0, 0.3);
 
 
         originalBuffer.connect(gainNode2);
@@ -113,14 +100,22 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
                 // once zeros calculated, let's fill the rest of the buffer
             }
 
+            const zerosFoundWithHzScale = zerosFound / 44100;
+
+            gainNode2.gain.linearRampToValueAtTime(0, 0.3);
+
+            gainNode.gain.setValueAtTime(0, 0);
+            gainNode.gain.linearRampToValueAtTime(1, zerosFoundWithHzScale);
+
+
             // resolve(modifiedBuffer);
 
 
             buffer2.buffer = renderedBuffer;
             buffer2.connect(gainNode);
 
-            buffer2.start(0, zerosFound / 44100);
-            originalBuffer.start(0, 0, 0.3);
+            buffer2.start(0, zerosFoundWithHzScale);
+            originalBuffer.start(0, 0, zerosFoundWithHzScale);
 
             offlineCtx2.startRendering().then(renderedBuffer2 => {
                 resolve(renderedBuffer2)

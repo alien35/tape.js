@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tape.core.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape.core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stretch/waa-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/stretch/waa-player.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tape.core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="804" column="194" selection-start-line="804" selection-start-column="194" selection-end-line="804" selection-end-column="194" />
+            <state relative-caret-position="268">
+              <caret line="2409" column="10" selection-start-line="2409" selection-start-column="10" selection-end-line="2409" selection-end-column="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -31,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="74" column="11" lean-forward="true" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+            <state relative-caret-position="182">
+              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -73,13 +71,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="buffered-pv.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1072">
+              <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_node</find>
-      <find>_canpla</find>
-      <find>_canpl</find>
       <find>waaplayer</find>
       <find>samplerate</find>
       <find>0.3</find>
@@ -107,6 +111,9 @@
       <find>waapla</find>
       <find>ended</find>
       <find>timeout =</find>
+      <find>console</find>
+      <find>load</find>
+      <find>_emit('load'</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,8 +125,8 @@
         <option value="$PROJECT_DIR$/src/gain-processor.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/stretch/buffered-pv.js" />
-        <option value="$PROJECT_DIR$/stretch/waa-player.js" />
         <option value="$PROJECT_DIR$/src/tape.core.js" />
+        <option value="$PROJECT_DIR$/stretch/waa-player.js" />
       </list>
     </option>
   </component>
@@ -213,25 +220,25 @@
       <workItem from="1538505841082" duration="10373000" />
       <workItem from="1538589099617" duration="1953000" />
       <workItem from="1538612102673" duration="7035000" />
-      <workItem from="1538690648592" duration="890000" />
+      <workItem from="1538690648592" duration="1398000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31030000" />
+    <option name="totallyTimeSpent" value="31538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32969698" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32969698" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -614,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stretch/cbuffer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3945">
@@ -628,20 +628,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
+    <entry file="file://$PROJECT_DIR$/src/tape.core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" column="11" lean-forward="true" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+        <state relative-caret-position="268">
+          <caret line="2409" column="10" selection-start-line="2409" selection-start-column="10" selection-end-line="2409" selection-end-column="10" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tape.core.js">
+    <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="804" column="194" selection-start-line="804" selection-start-column="194" selection-end-line="804" selection-end-column="194" />
+        <state relative-caret-position="1072">
+          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
