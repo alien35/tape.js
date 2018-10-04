@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tape.core.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape.core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stretch/waa-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/stretch/waa-player.js" afterDir="false" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tape.core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="2362" column="24" selection-start-line="2362" selection-start-column="24" selection-end-line="2362" selection-end-column="24" />
+            <state relative-caret-position="212">
+              <caret line="804" column="194" selection-start-line="804" selection-start-column="194" selection-end-line="804" selection-end-column="194" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -30,11 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="112" column="40" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
+            <state relative-caret-position="1110">
+              <caret line="74" column="11" lean-forward="true" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dsp.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stretch/dsp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30435">
+              <caret line="2029" column="10" lean-forward="true" selection-start-line="2029" selection-start-column="10" selection-end-line="2029" selection-end-column="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -45,68 +58,17 @@
       <file leaf-file-name="PV_fast_5.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/PV_fast_5.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-282">
-              <caret line="2" column="32" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gain-processor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stretch/gain-processor.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="dsp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stretch/dsp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-623">
-              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="2835">
+              <caret line="189" column="33" selection-start-line="189" selection-start-column="33" selection-end-line="189" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="cbuffer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/cbuffer.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="buffered-pv.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="offline-tape.core.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="23" column="557" selection-start-line="23" selection-start-column="557" selection-end-line="23" selection-end-column="557" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tape.core.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/tape.core.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret column="50024" selection-start-column="50024" selection-end-column="50024" />
+            <state relative-caret-position="3945">
+              <caret line="263" column="25" selection-start-line="263" selection-start-column="17" selection-end-line="263" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -115,36 +77,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.create(</find>
-      <find>update:</find>
-      <find>selff</find>
-      <find>waapla</find>
-      <find>main</find>
-      <find>_pv</find>
-      <find>PV=</find>
-      <find>waaplay</find>
-      <find>_pv</find>
-      <find>connect</find>
-      <find>audiowor</find>
-      <find>gain-pr</find>
-      <find>originalbu</find>
-      <find>_samplerate</find>
-      <find>_canplay</find>
-      <find>isprocessing</find>
-      <find>originalduration</find>
-      <find>offlineCtx2</find>
-      <find>samplerate</find>
-      <find>position</find>
-      <find>loadbuffer</find>
-      <find>vocoder:</find>
-      <find>loadbuff</find>
-      <find>audiocontext</find>
-      <find>framesi</find>
-      <find>canpla</find>
       <find>_node</find>
       <find>_canpla</find>
-      <find>waaplayer</find>
       <find>_canpl</find>
+      <find>waaplayer</find>
+      <find>samplerate</find>
+      <find>0.3</find>
+      <find>= 0</find>
+      <find>._posit</find>
+      <find>position</find>
+      <find>in here</find>
+      <find>canplay</find>
+      <find>buffer2</find>
+      <find>originalbu</find>
+      <find>start</find>
+      <find>_pv</find>
+      <find>consol</find>
+      <find>originalbuffer</find>
+      <find>clipDuration</find>
+      <find>clipdura</find>
+      <find>start(</find>
+      <find>_ended =</find>
+      <find>_ended = true</find>
+      <find>.start(</find>
+      <find>eq</find>
+      <find>vocode</find>
+      <find>_vocode</find>
+      <find>_vocode =</find>
+      <find>waapla</find>
+      <find>ended</find>
+      <find>timeout =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,8 +117,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/gain-processor.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/tape.core.js" />
+        <option value="$PROJECT_DIR$/stretch/buffered-pv.js" />
         <option value="$PROJECT_DIR$/stretch/waa-player.js" />
+        <option value="$PROJECT_DIR$/src/tape.core.js" />
       </list>
     </option>
   </component>
@@ -248,11 +211,14 @@
       <updated>1538495109690</updated>
       <workItem from="1538495111210" duration="4702000" />
       <workItem from="1538505841082" duration="10373000" />
+      <workItem from="1538589099617" duration="1953000" />
+      <workItem from="1538612102673" duration="7035000" />
+      <workItem from="1538690648592" duration="890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19555000" />
+    <option name="totallyTimeSpent" value="31030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -262,29 +228,19 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3078788" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32969698" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32969698" />
-      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,19 +250,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/tape.core.min.js">
+    <entry file="file://$PROJECT_DIR$/stretch/cbuffer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret column="8401" selection-start-column="8401" selection-end-column="8401" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/distortion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-267">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="3945">
+          <caret line="263" column="25" selection-start-line="263" selection-start-column="17" selection-end-line="263" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -353,11 +300,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/distortion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-267">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-267" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
@@ -443,11 +386,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/distortion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-267">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-267" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tape.core.js">
@@ -493,11 +432,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/distortion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-267">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-267" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
@@ -583,11 +518,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/distortion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-267">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-267" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tape.core.js">
@@ -626,11 +557,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/plugins/distortion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-267">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-267" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
@@ -642,64 +569,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/stretch/dsp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="23" column="557" selection-start-line="23" selection-start-column="557" selection-end-line="23" selection-end-column="557" />
+        <state relative-caret-position="30435">
+          <caret line="2029" column="10" lean-forward="true" selection-start-line="2029" selection-start-column="10" selection-end-line="2029" selection-end-column="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="8680" column="4" selection-start-line="8680" selection-start-column="4" selection-end-line="8680" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stretch/PV_fast_5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2835">
+          <caret line="189" column="33" selection-start-line="189" selection-start-column="33" selection-end-line="189" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/uglify-es/lib/ast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="109" column="8" selection-start-line="109" selection-start-column="8" selection-end-line="109" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/tape.core.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret column="50024" selection-start-column="50024" selection-end-column="50024" />
+        <state relative-caret-position="439">
+          <caret column="619813" selection-start-column="619813" selection-end-column="619813" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="23" column="557" selection-start-line="23" selection-start-column="557" selection-end-line="23" selection-end-column="557" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="206">
+          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stretch/cbuffer.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stretch/dsp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-623">
-          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stretch/gain-processor.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stretch/PV_fast_5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-282">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tape.core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="2362" column="24" selection-start-line="2362" selection-start-column="24" selection-end-line="2362" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="3945">
+          <caret line="263" column="25" selection-start-line="263" selection-start-column="17" selection-end-line="263" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="112" column="40" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
+        <state relative-caret-position="1110">
+          <caret line="74" column="11" lean-forward="true" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tape.core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="804" column="194" selection-start-line="804" selection-start-column="194" selection-end-line="804" selection-end-column="194" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

@@ -20,8 +20,6 @@
      * to all sounds that are currently playing or will be in the future.
      */
 
-    var _pv = new BufferedPV(2048);
-
     var TapeMachineGlobal = function() {
         this.init();
     };
@@ -318,7 +316,6 @@
                 // Create an empty buffer.
                 var source = self.ctx.createBufferSource();
                 source.buffer = self._scratchBuffer;
-                console.log(self.ctx.destination, 'ctx destination???')
                 source.connect(self.ctx.destination);
 
                 // Play the empty buffer.
@@ -663,13 +660,21 @@
         play: function(sprite, internal, input) {
             var self = this;
             var id = null;
-            console.log(self, 'self...pla')
 
-            var startTime = input.startTime;
-            var clipOffset = input.clipOffset;
-            var clipDuration = input.clipDuration;
-            var fadeIn = input.fadeIn;
-            var fadeOut = input.fadeRight;
+            var startTime, clipOffset, clipDuration;
+            if (!input) {
+                startTime = 0;
+                clipOffset = 0;
+                clipDuration = self._duration;
+            } else {
+                startTime = input.startTime;
+                clipOffset = input.clipOffset;
+                clipDuration = input.clipDuration;
+                var fadeIn = input.fadeIn;
+                var fadeOut = input.fadeRight;
+
+            }
+
 
             // Determine if a sprite, sound id or nothing was passed
             if (typeof sprite === 'number') {
@@ -760,7 +765,8 @@
             // Determine how long to play for and where to start playing.
             var seek = Math.max(0, sound._seek > 0 ? sound._seek : self._sprite[sprite][0] / 1000);
             var duration = Math.max(0, ((self._sprite[sprite][0] + self._sprite[sprite][1]) / 1000) - seek);
-            var timeout = (duration * 1000) / Math.abs(sound._rate);
+
+            var timeout = clipDuration * 1000;
 
             // Update the parameters of the sound
             sound._paused = false;
@@ -789,11 +795,12 @@
                     node.gain.setValueAtTime(vol, self.machine.ctx.currentTime);
                     sound._playStart = self.machine.ctx.currentTime;
 
+
                     // Play the sound using the supported method.
                     if (typeof node.bufferSource.start === 'undefined') {
-                        sound._loop ? node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset, clipDuration) : node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset, 10000);
+                        sound._loop ? node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset) : node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset);
                     } else {
-                        sound._loop ? node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset, clipDuration) : node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset, 100000);
+                        sound._loop ? node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset) : node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset);
                     }
 
                     // Start a new timer if none is present.
@@ -1509,7 +1516,6 @@
         seek: function() {
             var self = this;
             var args = arguments;
-            console.log(args, 'args...')
             var seek, id;
 
             // Determine the values based on arguments.
@@ -2286,7 +2292,7 @@
             self._duration = cache[url].vocoder.duration;
             loadSound(self, cache[url].vocoder);
             /*
-            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate, _pv).then(function(waaBuffer) {
+            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate).then(function(waaBuffer) {
                 cache[self._src].vocoder = waaBuffer;
                 self._cachedPreVocodedBuffer = waaBuffer;
                 loadSound(self, waaBuffer);
@@ -2360,7 +2366,7 @@
         var success = function(buffer) {
             if (buffer && self._sounds.length > 0) {
                 if (self._vocode) {
-                    WAAPlayer(buffer, 2048, 4096, self._rate, _pv).then(function(waaBuffer) {
+                    WAAPlayer(buffer, 2048, 4096, self._rate).then(function(waaBuffer) {
                         cache[self._src] = {main: buffer, vocoder: waaBuffer};
                         self._cachedBuffer = buffer;
                         self._cachedPreVocodedBuffer = waaBuffer;
@@ -2527,12 +2533,10 @@
             if (self.effects && self.effects.length) {
                 for (var i = 0; i < self.effects.length; i++) {
                     nextEffect = self.effects[i];
-                    console.log(nextEffect.input, 'next effect inputt');
                     nodeToConnect.connect(nextEffect.input);
                     nodeToConnect = self.effects[i].output;
                 }
             }
-            console.log(self.machine.masterGain, 'master gain..')
             nodeToConnect.connect(self.machine.masterGain);
         },
 
