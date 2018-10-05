@@ -2279,25 +2279,20 @@
 
         // Check if the buffer has already been cached and use it instead.
         if (cache[url] && !self._vocode) {
-            // Set the duration from the cache.
-            self._duration = cache[url].main.duration;
+            if (self._vocode) {
+                // self._duration = cache[url].vocoder.duration;
+                // loadSound(self, cache[url].vocoder);
+                decodeAudioData(cache[url].main, self);
+            } else {
+                // Set the duration from the cache.
+                self._duration = cache[url].main.duration;
 
-            // Load the sound into this Reel.
-            loadSound(self, cache[url].main);
+                // Load the sound into this Reel.
+                loadSound(self, cache[url].main);
 
-            return;
-        }
+                return;
+            }
 
-        if (self._vocode && cache[url]) {
-            self._duration = cache[url].vocoder.duration;
-            loadSound(self, cache[url].vocoder);
-            /*
-            WAAPlayer(self.machine.ctx, cache[url].main, 2048, 4096, self._rate).then(function(waaBuffer) {
-                cache[self._src].vocoder = waaBuffer;
-                self._cachedPreVocodedBuffer = waaBuffer;
-                loadSound(self, waaBuffer);
-            })
-            */
         }
 
         if (/^data:[^;]+;base64,/.test(url)) {
@@ -2406,6 +2401,7 @@
         if (Object.keys(self._sprite).length === 0) {
             self._sprite = {__default: [0, self._duration * 1000]};
         }
+
 
         // Fire the loaded event.
         if (self._state !== 'loaded') {
