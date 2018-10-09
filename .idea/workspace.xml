@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/microsoft.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/notes.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/tuner/gain-processor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/tuner/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/tuner/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -94,11 +85,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="268" column="15" selection-start-line="268" selection-start-column="15" selection-end-line="268" selection-end-column="15" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="224">
+              <caret line="767" column="50" selection-start-line="767" selection-start-column="50" selection-end-line="767" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -125,7 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.start(</find>
       <find>eq</find>
       <find>vocode</find>
       <find>_vocode =</find>
@@ -155,6 +142,7 @@
       <find>frameid</find>
       <find>streamreceive</find>
       <find>streamrece</find>
+      <find>connect</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -256,12 +244,12 @@
       <workItem from="1538745624057" duration="390000" />
       <workItem from="1538830878726" duration="1855000" />
       <workItem from="1538960798634" duration="4116000" />
-      <workItem from="1539041001026" duration="2010000" />
+      <workItem from="1539041001026" duration="2625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43324000" />
+    <option name="totallyTimeSpent" value="43939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -412,6 +400,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="21" column="7" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="7" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -529,6 +520,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1065">
           <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -624,11 +618,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="268" column="15" selection-start-line="268" selection-start-column="15" selection-end-line="268" selection-end-column="15" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="224">
+          <caret line="767" column="50" selection-start-line="767" selection-start-column="50" selection-end-line="767" selection-end-column="50" />
         </state>
       </provider>
     </entry>
