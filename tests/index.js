@@ -524,7 +524,8 @@ $(document).ready(function () {
         notesArray,
         audioContext,
         sourceAudioNode,
-        analyserAudioNode;
+        analyserAudioNode,
+        centsOff;
 
     var isAudioContextSupported = function () {
         // This feature is still prefixed in Safari
@@ -586,6 +587,7 @@ $(document).ready(function () {
     var updateCents = function (cents) {
         // We may get negative values here.
         // Add 50 cents to what we get
+        centsOff = cents + 50;
         gauge.set(cents + 50);
         $('#cents').text(cents);
     };
@@ -684,13 +686,16 @@ $(document).ready(function () {
             var cents = findCentsOffPitch(fundalmentalFreq, note.frequency);
             updateNote(note.note);
             updateCents(cents);
+            return cents;
         }
         else {
+            // no note, 50 will resolve to 0 detune
             updateNote('--');
-            updateCents(-50);
+            updateCents(50);
+            return 50;
         }
 
-        frameId = window.requestAnimationFrame(detectPitch);
+        // frameId = window.requestAnimationFrame(detectPitch);
     };
 
     var streamReceived = function (stream) {
@@ -742,7 +747,7 @@ $(document).ready(function () {
 
             var request = new XMLHttpRequest();
 
-            request.open('GET', './audio/craig_hit_song.mp3', true);
+            request.open('GET', './audio/wath-pea.m4a', true);
 
             request.responseType = 'arraybuffer';
 
@@ -762,14 +767,57 @@ $(document).ready(function () {
 
                         bufferSource.connect(analyserAudioNode);
 
-                        var scriptProcessor = audioContext.createScriptProcessor();
+                        var scriptProcessor = audioContext.createScriptProcessor(4096, 2);
 
                         let pitchShifter = PitchShift(audioContext);
-                        pitchShifter.transpose = 10;
+                        // pitchShifter.transpose = 10;
 
                         analyserAudioNode.connect(pitchShifter);
 
                         pitchShifter.connect(audioContext.destination);
+                        scriptProcessor.connect(audioContext.destination);
+
+                        var centsTwoBefore = 0;
+                        var _centsOff = 0;
+                        scriptProcessor.onaudioprocess = function(e) {
+                            _centsOff = detectPitch();
+                            console.log((_centsOff - 50) / 100)
+                            pitchShifter.transpose = (_centsOff - 50) / 100;
+                            /*
+                            if (centsOff - lastCentsOff > 100) {
+                                pitchShifter.transpose = (centsOff - 50) / 100;
+                                lastCentsOff = centsOff;
+                            } else if (lastCentsOff - centsOff > 100) {
+                                pitchShifter.transpose = (centsOff - 50) / 100;
+                                lastCentsOff = centsOff;
+                            } else if ((centsOff - lastCentsOff) > 1) {
+                                // 80 - 20. So we want to move up.
+                                console.log((lastCentsOff + 1) / 100)
+                                pitchShifter.transpose = (lastCentsOff + 1) / 100;
+                                lastCentsOff = lastCentsOff + 10;
+                            } else if ((lastCentsOff - centsOff) > 1) {
+                                // 20 - 80. So we want to move down.
+                                console.log((lastCentsOff - 1) / 100)
+                                pitchShifter.transpose = (lastCentsOff - 1) / 100;
+                                lastCentsOff = lastCentsOff - 1;
+                            } else {
+                                console.log(0)
+                                pitchShifter.transpose = 0;
+                                lastCentsOff = 0;
+                            }
+
+                            /*
+                             else if (centsOff - lastCentsOff < -50) {
+                                pitchShifter.transpose = (centsOff) / 100;
+                                lastCentsOff = centsOff;
+                            }
+                             */
+                            // console.log(centsOff, 'centsofff')
+                            // pitchShifter.transpose = (centsOff - 50) / 100;
+                            // console.log(centsOff, 'cents offf')
+
+                        };
+
                         bufferSource.start();
 
                         detectPitch();
