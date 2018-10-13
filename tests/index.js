@@ -525,7 +525,9 @@ $(document).ready(function () {
         audioContext,
         sourceAudioNode,
         analyserAudioNode,
-        centsOff;
+        centsOff,
+        pitchShifter,
+        _centsOff = 0;
 
     var isAudioContextSupported = function () {
         // This feature is still prefixed in Safari
@@ -698,18 +700,6 @@ $(document).ready(function () {
         // frameId = window.requestAnimationFrame(detectPitch);
     };
 
-    var streamReceived = function (stream) {
-        micStream = stream;
-
-        analyserAudioNode = audioContext.createAnalyser();
-        analyserAudioNode.fftSize = 2048;
-
-        sourceAudioNode = audioContext.createMediaStreamSource(micStream);
-        sourceAudioNode.connect(analyserAudioNode);
-
-        detectPitch();
-    };
-
     var turnOffReferenceSound = function () {
         sourceAudioNode.stop();
         sourceAudioNode = null;
@@ -745,6 +735,19 @@ $(document).ready(function () {
             $('#microphoneOptions').toggle(true);
 
 
+
+
+            class PortWorkletNode extends AudioWorkletNode {
+                constructor(context) {
+                    super(context, 'gain-processor');
+                    this.port.onmessage = this.handleMessage.bind(this);
+                }
+                handleMessage() {
+                    pitchShifter.transpose = (detectPitch() - 50) / 100;
+                }
+            }
+
+
             var request = new XMLHttpRequest();
 
             request.open('GET', './audio/wath-pea.m4a', true);
@@ -767,21 +770,31 @@ $(document).ready(function () {
 
                         bufferSource.connect(analyserAudioNode);
 
-                        var scriptProcessor = audioContext.createScriptProcessor(4096, 2);
+                        // var scriptProcessor = audioContext.createScriptProcessor(256, 2);
 
-                        let pitchShifter = PitchShift(audioContext);
-                        // pitchShifter.transpose = 10;
+                        pitchShifter = PitchShift(audioContext);
+                        // pitchShifter.transpose = 0;
 
                         analyserAudioNode.connect(pitchShifter);
 
                         pitchShifter.connect(audioContext.destination);
-                        scriptProcessor.connect(audioContext.destination);
 
                         var centsTwoBefore = 0;
-                        var _centsOff = 0;
+
+                        audioContext.audioWorklet.addModule('./tuner/gain-processor.js').then(() => {
+
+                            // After the resolution of module loading, an AudioWorkletNode can be
+                            // constructed.
+                            let scriptProcessor = new PortWorkletNode(audioContext, 'gain-processor');
+
+                            scriptProcessor.connect(audioContext.destination);
+
+
+                        });
+
+                        /*
                         scriptProcessor.onaudioprocess = function(e) {
                             _centsOff = detectPitch();
-                            console.log((_centsOff - 50) / 100)
                             pitchShifter.transpose = (_centsOff - 50) / 100;
                             /*
                             if (centsOff - lastCentsOff > 100) {
@@ -811,16 +824,17 @@ $(document).ready(function () {
                                 pitchShifter.transpose = (centsOff) / 100;
                                 lastCentsOff = centsOff;
                             }
-                             */
+
                             // console.log(centsOff, 'centsofff')
                             // pitchShifter.transpose = (centsOff - 50) / 100;
                             // console.log(centsOff, 'cents offf')
 
                         };
+                        */
 
                         bufferSource.start();
 
-                        detectPitch();
+                        // detectPitch();
 
                     },
 

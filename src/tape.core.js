@@ -920,7 +920,7 @@
             if (o.destination) {
                 self._destination = o.destination.node;
             }
-            if (o.pitchShift) {
+            if (typeof o.pitchShift === 'number') {
                 self.effects[0].transpose = o.pitchShift;
             }
         },
