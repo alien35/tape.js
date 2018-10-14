@@ -6,86 +6,91 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
 
     return new Promise((resolve) => {
 
-        const originalDuration = audioBuffer.duration * speed;
+        let originalDuration = audioBuffer.duration * speed;
+        originalDuration += 1;
 
         var offlineCtx = new OfflineAudioContext(2,44100*originalDuration,44100);
         var offlineCtx2 = new OfflineAudioContext(2,44100*originalDuration,44100);
         var pitchOfflineCtx = new OfflineAudioContext(2,44100*originalDuration,44100);
+        console.log(originalDuration, 'orig durationnn');
+
+        var pitchShifter = new PitchShifter(pitchOfflineCtx, audioBuffer, 1024);
+        pitchShifter.pitch = 1.3;
+        var pitchShiftGain = pitchOfflineCtx.createGain();
+        pitchShiftGain.connect(pitchOfflineCtx.destination);
+        pitchShifter.connect(pitchShiftGain);
+        // pitchShiftGain.gain.setValueAtTime(0, originalDuration - 0.3);
+        // pitchShiftGain.gain.setTargetAtTime(0, originalDuration - 1.051, 0.1);
+
+        pitchOfflineCtx.startRendering().then(pitchedAudioBuffer => {
+            var buffer2 = offlineCtx2.createBufferSource();
 
 
-        var buffer2 = offlineCtx2.createBufferSource();
+            var originalBuffer = offlineCtx2.createBufferSource();
+            originalBuffer.buffer = pitchedAudioBuffer;
 
 
-        var originalBuffer = offlineCtx2.createBufferSource();
-        originalBuffer.buffer = audioBuffer;
+            var _node = offlineCtx.createScriptProcessor(bufferSize, 2);
 
+            _pv.set_audio_buffer(pitchedAudioBuffer);
 
-        var _node = offlineCtx.createScriptProcessor(bufferSize, 2);
+            // speed is 0.8333
+            var _newAlpha = speed; // * (detuneValue * 0.0056); // target is detune = 200, speed = 0.93333
 
-        _pv.set_audio_buffer(audioBuffer);
+            _pv.alpha = speed;
 
-        // speed is 0.8333
-        var _newAlpha = speed; // * (detuneValue * 0.0056); // target is detune = 200, speed = 0.93333
+            var _newPosition = 50;
 
-        _pv.alpha = speed;
+            _pv.position = 50;
 
-        var _newPosition = 50;
+            var _canPlay = false;
+            var isProcessing = false;
 
-        _pv.position = 50;
-
-        var _canPlay = false;
-        var isProcessing = false;
-
-        this.play = function() {
-            _canPlay = true;
-        }
-
-        this.stop = function() {
-            _canPlay = false;
-        }
-
-        _node.onaudioprocess = function(e) {
-            if (_canPlay) {
-                isProcessing ++;
-                if (_newAlpha != undefined) {
-                    _pv.alpha = _newAlpha;
-                    _newAlpha = undefined;
-                }
-
-                if (_newPosition != undefined) {
-                    _pv.position = _newPosition;
-                    _newPosition = undefined;
-                }
-
-                _pv.process(e.outputBuffer);
+            this.play = function() {
+                _canPlay = true;
             }
-        };
 
-        var gainNode = offlineCtx2.createGain();
+            this.stop = function() {
+                _canPlay = false;
+            }
+
+            _node.onaudioprocess = function(e) {
+                if (_canPlay) {
+                    isProcessing ++;
+                    if (_newAlpha != undefined) {
+                        _pv.alpha = _newAlpha;
+                        _newAlpha = undefined;
+                    }
+
+                    if (_newPosition != undefined) {
+                        _pv.position = _newPosition;
+                        _newPosition = undefined;
+                    }
+
+                    _pv.process(e.outputBuffer);
+                }
+            };
+
+            var gainNode = offlineCtx2.createGain();
 
 
-        gainNode.connect(offlineCtx2.destination);
+            gainNode.connect(offlineCtx2.destination);
 
-        _node.connect(offlineCtx.destination);
+            _node.connect(offlineCtx.destination);
 
-        gainNode.connect(offlineCtx2.destination);
+            gainNode.connect(offlineCtx2.destination);
 
-        var gainNode2 = offlineCtx2.createGain();
-        gainNode2.gain.setValueAtTime(1, 0);
-
-
-        originalBuffer.connect(gainNode2);
-        gainNode2.connect(offlineCtx2.destination);
+            var crossFadeHelperGainNode = offlineCtx2.createGain();
+            crossFadeHelperGainNode.gain.setValueAtTime(1, 0);
 
 
-        this.play();
-        offlineCtx.startRendering().then(_renderedBuffer => {
+            originalBuffer.connect(crossFadeHelperGainNode);
+            // TODO: DO WE NEED THIS??? crossFadeHelperGainNode.connect(offlineCtx2.destination);
 
-            let pitchShifter = PitchShifter(pitchOfflineCtx, _renderedBuffer, 1024);
-            pitchShifter.pitch = 1.3;
-            pitchShifter.connect(pitchOfflineCtx.destination);
 
-            pitchOfflineCtx.startRendering().then(renderedBuffer => {
+            this.play();
+            offlineCtx.startRendering().then(renderedBuffer => {
+
                 const thisDuration = renderedBuffer.duration;
                 _canPlay = false;
                 // _node.disconnect();
@@ -106,10 +111,12 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
 
                 const zerosFoundWithHzScale = zerosFound / 44100;
 
-                gainNode2.gain.linearRampToValueAtTime(0, 0.3);
+                // crossFadeHelperGainNode.gain.linearRampToValueAtTime(0, 0.3);
 
-                gainNode.gain.setValueAtTime(0, 0);
-                gainNode.gain.linearRampToValueAtTime(1, zerosFoundWithHzScale);
+                gainNode.gain.value = 1;
+                // gainNode.gain.setValueAtTime(1, originalDuration - 0.5);
+                // gainNode.gain.setTargetAtTime(0, 3, 0.5);
+                // gainNode.gain.linearRampToValueAtTime(1, zerosFoundWithHzScale);
 
 
                 // resolve(modifiedBuffer);
@@ -124,37 +131,20 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
                 offlineCtx2.startRendering().then(renderedBuffer2 => {
                     resolve(renderedBuffer2)
                 })
-            })
+
+            });
+        })
 
 
-        });
+
     })
 
 }
 
 /*
-function createDelayTimeBuffer(context, activeTime, fadeTime, shiftUp) {
-    var length1 = activeTime * context.sampleRate;
-    var length2 = (activeTime - 2*fadeTime) * context.sampleRate;
-    var length = length1 + length2;
-    var buffer = context.createBuffer(1, length, context.sampleRate);
-    var p = buffer.getChannelData(0);
 
-    // 1st part of cycle
-    for (var i = 0; i < length1; ++i) {
-        if (shiftUp)
-        // This line does shift-up transpose
-            p[i] = (length1-i)/length;
-        else
-        // This line does shift-down transpose
-            p[i] = i / length1;
-    }
+            let pitchShifter = new PitchShifter(pitchOfflineCtx, _renderedBuffer, 1024);
+            pitchShifter.pitch = 1.3;
+            pitchShifter.connect(pitchOfflineCtx.destination);
 
-    // 2nd part
-    for (var i = length1; i < length; ++i) {
-        p[i] = 0;
-    }
-
-    return buffer;
-}
  */

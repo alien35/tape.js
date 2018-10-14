@@ -921,7 +921,7 @@
                 self._destination = o.destination.node;
             }
             if (o.pitchShift) {
-                self.effects[0].transpose = o.pitchShift;
+                // self.effects[0].transpose = o.pitchShift;
             }
         },
 
