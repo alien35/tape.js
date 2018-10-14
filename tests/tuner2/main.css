@@ -1,0 +1,1163 @@
+body {
+    background-color: #CCC;
+    background-image: url("");
+    padding: 0;
+    margin: 0;
+    font-family: courier,"Courier New",monospace
+}
+
+button,strong {
+    font-family: courier,"Courier New",monospace
+}
+
+#wrapper {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #FFF;
+    padding: 30px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: courier,"Courier New",monospace;
+    -moz-box-shadow: 0 0 20px #888;
+    -webkit-box-shadow: 0 0 20px #888;
+    box-shadow: 0 0 20px #888
+}
+
+#wrapper.wide {
+    min-width: 468px
+}
+
+#wrapper.wider {
+    min-width: 535px
+}
+
+#mainContent {
+    width: 70%;
+    width: -webkit-calc(100% - 190px);
+    width: calc(100% - 190px);
+    float: left
+}
+
+.superscript {
+    vertical-align: sub;
+    font-size: smaller
+}
+
+#selector {
+    margin-bottom: 15px
+}
+
+.generator {
+    border: thin solid #999;
+    border-radius: 3px;
+    max-width: 420px;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 30px 0;
+    background: #f0f0f0
+}
+
+.volume-wrapper {
+    padding: 10px 20px
+}
+
+.volume-wrapper label {
+    display: inline-block;
+    margin-bottom: 10px
+}
+
+.advanced-options {
+    padding: 10px
+}
+
+.input--frequency {
+    padding: 0;
+    display: block;
+    float: left;
+    border-radius: 3px 0px 0px 3px;
+    max-width: 150px;
+    font-size: 45px;
+    text-align: right;
+    margin-left: 40px;
+    margin-bottom: 0px;
+    font-family: courier,"Courier New",monospace;
+    border: solid 1px #999
+}
+
+#units {
+    float: left;
+    clear: right;
+    padding: 0 0 0 8px;
+    margin: 0;
+    margin-top: -8px;
+    line-height: 1.4;
+    font-size: 45px;
+    font-family: courier,"Courier New",monospace;
+    border-left: none
+}
+
+.generator-buttons {
+    margin-top: 20px;
+    text-align: center
+}
+
+.generatorButton {
+    display: inline-block;
+    float: none;
+    font-size: 2.3em;
+    padding: 10px;
+    border-radius: 3px
+}
+
+.waveform-wrapper {
+    display: block;
+    height: 50px;
+    width: -webkit-calc(50% - 20px);
+    width: calc(50% - 20px);
+    float: left;
+    border: solid 1px #999;
+    padding: 10px;
+    margin: 10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #e0e0e0;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px
+}
+
+.waveform-wrapper label,.waveform-wrapper input {
+    cursor: pointer;
+    float: left
+}
+
+.waveform-wrapper label {
+    margin: 2px 0 0 3px
+}
+
+.waveform-image {
+    float: right;
+    height: 30px;
+    width: 35px;
+    background: url("/img/waveforms.png")
+}
+
+.waveform-image--sine {
+    background-position: 0px -3px
+}
+
+.waveform-image--square {
+    background-position: 98px -3px
+}
+
+.waveform-image--sawtooth {
+    background-position: 58px -3px
+}
+
+.waveform-image--triangle {
+    background-position: 140px -3px
+}
+
+@media all and (max-width: 480px) {
+    .generatorButton {
+        font-size:1.5em
+    }
+
+    #units,.input--frequency {
+        font-size: 30px
+    }
+
+    .waveform-wrapper {
+        float: none;
+        width: auto
+    }
+}
+
+@media all and (max-width: 380px) {
+    .generatorButton {
+        margin:20px 0;
+        padding: 7px
+    }
+
+    .input--frequency {
+        margin: 0;
+        width: 100%;
+        max-width: none;
+        text-align: center
+    }
+
+    .input-group {
+        padding: 0 20px
+    }
+
+    #units {
+        width: 100%;
+        text-align: center
+    }
+}
+
+h1 {
+    font-size: 2.5em;
+    padding: 0;
+    margin: 0 0 0px 0;
+    border-bottom: solid 2px #333;
+    padding-bottom: 5px
+}
+
+h1 img {
+    float: left;
+    margin-right: 20px;
+    display: block
+}
+
+h1 a {
+    text-decoration: none;
+    color: black
+}
+
+.tagline {
+    margin: 5px 0 40px
+}
+
+#verticalBannerAd {
+    width: 120px;
+    margin-left: 4px
+}
+
+button {
+    float: left;
+    margin: 9px;
+    padding: 0px;
+    background: #999;
+    color: white;
+    border-style: none;
+    text-align: center;
+    vertical-align: middle;
+    outline: none
+}
+
+.disabled {
+    background: #999 !important
+}
+
+button:hover {
+    cursor: pointer
+}
+
+.clear {
+    margin: 0px;
+    padding: 0px;
+    clear: both;
+    height: 0px
+}
+
+#play {
+    clear: left
+}
+
+p {
+    font-family: verdana;
+    margin: 10px 0;
+    font-size: 1em;
+    line-height: 1.4em
+}
+
+#spinner p {
+    font-size: 0.75em;
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 0
+}
+
+#spinner img {
+    margin: 0 auto;
+    display: block
+}
+
+#footer {
+    font-family: courier,"Courier New",monospace;
+    color: #999;
+    font-size: 0.8em;
+    text-align: center;
+    float: left;
+    margin: 60px auto 0px
+}
+
+#ad {
+    margin: 20px auto 0;
+    width: 468px;
+    font-family: Verdana, Geneva, sans-serif;
+    height: 60px
+}
+
+#skyscraper {
+    border: solid thin black;
+    width: 120px;
+    height: 600px;
+    float: right
+}
+
+#navMenu {
+    width: 160px;
+    margin-right: 30px;
+    float: left
+}
+
+.tuningButton {
+    font-size: 1em;
+    padding: 5px 7px 7px;
+    border-radius: 3px
+}
+
+.beginTuning {
+    background-color: #57c24d
+}
+
+.beginTuning:hover,.beginTuning.active {
+    background-color: #43da35
+}
+
+.stopTuning {
+    background-color: #e74c3c
+}
+
+.stopTuning:hover {
+    background-color: #ee8176;
+    background-color: #ff3824
+}
+
+.downloadButton {
+    background-color: #38a3eb
+}
+
+.downloadButton:hover {
+    background-color: #9bd1f5
+}
+
+#tuningNotes {
+    margin: 25px auto;
+    text-align: center
+}
+
+h3 {
+    text-align: center
+}
+
+.dialpad {
+    background-color: #f0f0f0;
+    border: solid 1px #999;
+    border-radius: 3px;
+    padding: 10px
+}
+
+.dialpad td {
+    padding: 7px
+}
+
+.beginDial {
+    height: 35px;
+    background-color: #57c24d;
+    width: 35px;
+    border-radius: 3px;
+    font-size: 1.5em
+}
+
+.beginDial:active {
+    background-color: #43da35
+}
+
+@media all and (max-width: 380px) {
+    .dialpad td {
+        padding:3px
+    }
+}
+
+table {
+    margin: 0 auto 50px
+}
+
+.backToTop {
+    text-align: center;
+    font-size: 0.8em
+}
+
+.tuningTable {
+    width: 100%
+}
+
+.tuningTable th {
+    height: 2em;
+    font-size: 1.5em;
+    font-family: Verdana, Geneva, sans-serif;
+    text-align: center
+}
+
+.noteName {
+    text-align: right;
+    width: 40%;
+    font-family: Verdana, Geneva, sans-serif;
+    padding-right: 12px
+}
+
+.notePlay {
+    text-align: center;
+    width: 55px
+}
+
+.noteStop {
+    text-align: center;
+    width: 60px
+}
+
+#instrumentLinks {
+    text-align: center
+}
+
+.equation {
+    display: block;
+    margin: 20px auto
+}
+
+.download {
+    width: 95px;
+    text-align: center
+}
+
+.zip {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 15px auto;
+    width: 400px
+}
+
+#dBTable {
+    width: 100%;
+    text-align: center
+}
+
+#amazonLinks {
+    text-align: center;
+    margin: 45px 0 25px 0
+}
+
+#soundMeters {
+    text-align: center;
+    margin-left: 40%
+}
+
+select {
+    font-size: 1em
+}
+
+#bannerAd {
+    width: 730px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 30px
+}
+
+#ad {
+    margin-bottom: 30px
+}
+
+#hearingTester {
+    margin: 30px auto;
+    width: 100%
+}
+
+#calibrator {
+    height: 50px;
+    width: 75px;
+    margin: 0 auto;
+    border: solid;
+    padding: 0
+}
+
+.calibrationButton {
+    display: block;
+    background-color: #48C5FF;
+    padding: 10px;
+    border-radius: 5px;
+    float: none;
+    margin: 10px auto
+}
+
+#repeatButton {
+    margin: 25px auto;
+    font-size: 20px;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    float: none
+}
+
+#result {
+    width: 375px;
+    margin: 20px auto
+}
+
+#comments {
+    margin: 75px auto;
+    width: 90%;
+    font-size: 0.9em
+}
+
+.warning {
+    padding: 10px;
+    background: #faf8ee;
+    border: solid 1px #EDE6BB;
+    border-radius: 3px
+}
+
+.ad-wrapper {
+    padding: 20px 0;
+    min-height: 90px
+}
+
+.generator-ad-wrapper {
+    margin: 40px auto;
+    text-align: center
+}
+
+.generator-ad-wrapper #generator,.generator-ad-wrapper .rectangle-ad-wrapper,.generator-ad-wrapper .voice-synth,.generator-ad-wrapper .frequency-sweeper,.generator-ad-wrapper #hearingTester,.generator-ad-wrapper .time-stretcher {
+    display: inline-block;
+    text-align: left;
+    margin: 10px;
+    vertical-align: top
+}
+
+#nav {
+    height: auto
+}
+
+@media all and (max-width: 650px) {
+    #mainContent {
+        clear:both;
+        width: 100%
+    }
+}
+
+#nav {
+    display: block;
+    float: left;
+    list-style: none
+}
+
+#nav a {
+    text-decoration: none;
+    display: block;
+    padding: 10px 13px;
+    color: white;
+    background-color: #48C5FF;
+    background-color: #38a3eb;
+    border-radius: 3px;
+    font-family: courier,"Courier New",monospace;
+    -webkit-transition: background-color 0.5s;
+    -ms-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -o-transition: background-color 0.5s;
+    transition: background-color 0.5s
+}
+
+#nav a.current,#nav a:hover,#nav a:focus {
+    outline: none;
+    background-color: #a5d5f6;
+    -webkit-transition-duration: 0s;
+    -ms-transition-duration: 0s;
+    -moz-transition-duration: 0s;
+    -o-transition-duration: 0s;
+    transition-duration: 0s
+}
+
+.js-menu-toggle {
+    display: none !important
+}
+
+#nav,#nav ul,#nav ol,#subMenusContainer ul,#subMenusContainer ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    line-height: 1em;
+    overflow: hidden
+}
+
+#nav {
+    margin-bottom: 10px
+}
+
+#nav li {
+    display: block;
+    list-style: none;
+    margin-bottom: 8px;
+    position: relative
+}
+
+#nav li .new {
+    float: right;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: block;
+    content: "NEW";
+    background: #57c24d;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    text-align: center;
+    color: white;
+    line-height: 30px
+}
+
+.iframe-wrapper {
+    padding: 20px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    margin-top: 10px;
+    display: block
+}
+
+@media all and (max-width: 650px) {
+    .js-menu-toggle {
+        display:block !important
+    }
+
+    #nav li {
+        margin-bottom: 1px
+    }
+
+    #nav.js-open {
+        height: auto
+    }
+
+    #nav {
+        height: 36px;
+        width: 100%
+    }
+
+    #navMenu {
+        width: 100%;
+        width: -webkit-calc(100% + 60px);
+        width: calc(100% + 60px);
+        border-radius: 0;
+        margin-top: -30px;
+        margin-left: -30px;
+        padding-bottom: 20px
+    }
+
+    #navMenu a {
+        border-radius: 0
+    }
+
+    .iframe-wrapper {
+        display: none
+    }
+}
+
+.simple-player-container {
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px
+}
+
+.simple-player-container>div>ul {
+    margin: 0;
+    padding-left: 0
+}
+
+.simpleplayer-play-control {
+    background-image: url("/img/simple-player/play.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+    bottom: -5px;
+    position: relative
+}
+
+.simpleplayer-play-control:hover {
+    background-image: url("/img/simple-player/playing.png")
+}
+
+.simpleplayer-stop-control {
+    background-image: url("/img/simple-player/stop.png");
+    display: block;
+    width: 16px;
+    height: 16px;
+    bottom: -5px;
+    position: relative
+}
+
+.simpleplayer-stop-control:hover {
+    background-image: url("/img/simple-player/stoped.png")
+}
+
+#hearingTester {
+    margin: 40px;
+    border: solid 1px #999;
+    background: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 420px;
+    width: 100%
+}
+
+.pitch-shifter-container {
+    overflow: hidden;
+    margin: 40px 0
+}
+
+.pitch-shifter-wrapper {
+    float: left;
+    width: 370px;
+    width: calc(100% - 330px);
+    overflow: hidden
+}
+
+.pitch-shifter {
+    border: solid 1px #999;
+    background: #f0f0f0;
+    padding: 20px;
+    padding-top: 0;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 20px
+}
+
+.pitch-shifter .social-buttons {
+    margin-bottom: 0
+}
+
+#progress-wrapper {
+    background: white;
+    height: 10px;
+    cursor: pointer;
+    border: solid 1px #999;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 40px
+}
+
+#progress {
+    -webkit-border-radius: 3px 0 0 3px;
+    -ms-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    -o-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    background: #38a3eb;
+    height: 10px;
+    width: 0%
+}
+
+.button--pause:hover {
+    background: #999
+}
+
+.pitch-slider {
+    margin-bottom: 40px
+}
+
+#semitones {
+    width: 50px
+}
+
+.semitone-shift-label {
+    margin-bottom: 40px;
+    display: inline-block
+}
+
+.large-skyscraper {
+    width: 300px;
+    height: 600px;
+    float: right
+}
+
+@media all and (max-width: 920px) {
+    .pitch-shifter-wrapper {
+        width:auto;
+        float: none
+    }
+
+    .large-skyscraper {
+        margin: 0 auto;
+        float: none
+    }
+}
+
+@media all and (max-width: 500px) {
+    .pitch-shifter {
+        margin:40px 0
+    }
+}
+
+.voice-synth {
+    margin: 40px;
+    border: solid 1px #999;
+    background: #f0f0f0;
+    padding: 20px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    max-width: 420px;
+    width: 100%
+}
+
+.voice-synth .social-buttons {
+    margin-bottom: 0
+}
+
+.voice-synth textarea {
+    font-family: courier,"Courier New",monospace;
+    text-align: left;
+    display: block;
+    padding: 10px;
+    resize: none;
+    width: 100%;
+    font-size: 1.25em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 200px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    border-color: #999;
+    margin-bottom: 20px
+}
+
+.frequency-sweeper {
+    margin: 40px;
+    border: solid 1px #999;
+    background: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 420px;
+    width: 100%;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px
+}
+
+.frequency-sweeper .social-buttons {
+    margin-bottom: 0
+}
+
+.frequency-sweeper .frequency-options-wrapper {
+    overflow: hidden
+}
+
+.frequency-sweeper .input-group {
+    width: 33%;
+    float: left;
+    text-align: center
+}
+
+.frequency-sweeper .input-group input {
+    margin: 10px;
+    margin-left: 0;
+    width: 100%;
+    font-family: courier,"Courier New",monospace;
+    font-size: 30px
+}
+
+.frequency-sweeper p {
+    padding: 10px 20px
+}
+
+@media all and (max-width: 920px) {
+    .frequency-sweeper {
+        margin:40px 0
+    }
+}
+
+@media all and (max-width: 600px) {
+    .frequency-sweeper .input-group {
+        padding-left:0;
+        width: 100%
+    }
+}
+
+.time-stretcher {
+    margin: 40px;
+    border: solid 1px #999;
+    background: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 3px
+}
+
+.time-stretcher label {
+    display: block;
+    margin: 10px 0
+}
+
+.time-stretcher .social-buttons {
+    margin: 40px auto 20px
+}
+
+#audio-file-wrapper audio {
+    display: block;
+    width: 100%;
+    margin: 20px 0
+}
+
+.social-buttons {
+    display: table;
+    margin: 0px auto 40px;
+    min-height: 20px
+}
+
+.fb-share-button-wrapper {
+    float: left;
+    margin-right: 20px;
+    width: 100px
+}
+
+.twitter-share-button {
+    float: left;
+    margin-right: 5px
+}
+
+.noUi-target,.noUi-target * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.noUi-base {
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.noUi-origin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0
+}
+
+.noUi-handle {
+    position: relative;
+    z-index: 1
+}
+
+.noUi-stacking .noUi-handle {
+    z-index: 10
+}
+
+.noUi-stacking+.noUi-origin {
+    *z-index: -1
+}
+
+.noUi-state-tap .noUi-origin {
+    -webkit-transition: left 0.3s, top 0.3s;
+    transition: left 0.3s, top 0.3s
+}
+
+.noUi-state-drag * {
+    cursor: inherit !important
+}
+
+.noUi-horizontal {
+    height: 18px
+}
+
+.noUi-horizontal .noUi-handle {
+    width: 34px;
+    height: 28px;
+    left: -17px;
+    top: -6px
+}
+
+.noUi-horizontal.noUi-extended {
+    padding: 0 15px
+}
+
+.noUi-horizontal.noUi-extended .noUi-origin {
+    right: -15px
+}
+
+.noUi-vertical {
+    width: 18px
+}
+
+.noUi-vertical .noUi-handle {
+    width: 28px;
+    height: 34px;
+    left: -6px;
+    top: -17px
+}
+
+.noUi-vertical.noUi-extended {
+    padding: 15px 0
+}
+
+.noUi-vertical.noUi-extended .noUi-origin {
+    bottom: -15px
+}
+
+.noUi-background {
+    background: #FAFAFA;
+    box-shadow: inset 0 1px 1px #f0f0f0
+}
+
+.noUi-connect {
+    background: #3FB8AF;
+    box-shadow: inset 0 0 3px rgba(51,51,51,0.45);
+    -webkit-transition: background 450ms;
+    transition: background 450ms
+}
+
+.noUi-origin {
+    border-radius: 2px
+}
+
+.noUi-target {
+    border-radius: 4px;
+    border: 1px solid #D3D3D3;
+    box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB
+}
+
+.noUi-target.noUi-connect {
+    box-shadow: inset 0 0 3px rgba(51,51,51,0.45),0 3px 6px -5px #bbb
+}
+
+.noUi-dragable {
+    cursor: w-resize
+}
+
+.noUi-vertical .noUi-dragable {
+    cursor: n-resize
+}
+
+.noUi-handle {
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    background: #FFF;
+    cursor: default;
+    box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB
+}
+
+.noUi-active {
+    box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB
+}
+
+.noUi-handle:before,.noUi-handle:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 14px;
+    width: 1px;
+    background: #E8E7E6;
+    left: 14px;
+    top: 6px
+}
+
+.noUi-handle:after {
+    left: 17px
+}
+
+.noUi-vertical .noUi-handle:before,.noUi-vertical .noUi-handle:after {
+    width: 14px;
+    height: 1px;
+    left: 6px;
+    top: 14px
+}
+
+.noUi-vertical .noUi-handle:after {
+    top: 17px
+}
+
+[disabled].noUi-connect,[disabled] .noUi-connect {
+    background: #B8B8B8
+}
+
+[disabled] .noUi-handle {
+    cursor: not-allowed
+}
+
+.social-icons {
+    text-align: center
+}
+
+.social-icons .soundcloud {
+    margin-left: 20px
+}
+
+.binaural-freq-wrapper {
+    width: 50%;
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left
+}
+
+.binaural-freq-wrapper input {
+    text-align: center;
+    margin: 0
+}
+
+.binaural-freq-wrapper p {
+    float: left;
+    text-align: center
+}
+
+@media all and (max-width: 650px) {
+    .binaural-freq-wrapper input {
+        max-width:100px
+    }
+}
+
+#freq2,#freq2label {
+    float: right
+}
+
+.simple-player-container {
+    display: table;
+    margin: 0 auto
+}
+
+.sweep-form {
+    overflow: hidden
+}
+
+@media all and (max-width: 360px) {
+    .generator-ad-wrapper .rectangle-ad-wrapper {
+        margin-left:-20px
+    }
+}
