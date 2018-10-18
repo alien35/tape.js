@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plugins/biquad-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/biquad-filter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tape.core.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape.core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stretch/waa-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/stretch/waa-player.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="biquad-filter.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="biquad-filter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/plugins/biquad-filter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
+            <state relative-caret-position="222">
+              <caret line="89" column="39" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="39" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -53,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -174,8 +170,8 @@
         <option value="$PROJECT_DIR$/stretch/soundtouch.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/tape.core.js" />
-        <option value="$PROJECT_DIR$/src/plugins/biquad-filter.js" />
         <option value="$PROJECT_DIR$/stretch/waa-player.js" />
+        <option value="$PROJECT_DIR$/src/plugins/biquad-filter.js" />
       </list>
     </option>
   </component>
@@ -286,16 +282,15 @@
       <workItem from="1539184567912" duration="216000" />
       <workItem from="1539199513738" duration="854000" />
       <workItem from="1539458219045" duration="19054000" />
-      <workItem from="1539733610217" duration="2701000" />
+      <workItem from="1539733610217" duration="2844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80255000" />
+    <option name="totallyTimeSpent" value="80398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -662,16 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/biquad-filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -683,6 +668,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="127" column="32" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/biquad-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="89" column="39" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="39" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
