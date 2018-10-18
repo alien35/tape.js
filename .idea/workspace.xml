@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugins/biquad-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugins/biquad-filter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tape.core.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape.core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stretch/waa-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/stretch/waa-player.js" afterDir="false" />
     </list>
@@ -21,26 +23,32 @@
       <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tape.core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="1223" column="59" selection-start-line="1223" selection-start-column="59" selection-end-line="1223" selection-end-column="59" />
+            <state relative-caret-position="12480">
+              <caret line="840" column="34" selection-start-line="840" selection-start-column="34" selection-end-line="840" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/index.js">
+      <file leaf-file-name="reverb.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/plugins/reverb.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2815">
-              <caret line="701" selection-start-line="701" selection-end-line="701" />
+            <state relative-caret-position="520">
+              <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gain-processor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/tuner/gain-processor.js">
+      <file leaf-file-name="biquad-filter.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/plugins/biquad-filter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="530">
+              <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,8 +56,8 @@
       <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+            <state relative-caret-position="306">
+              <caret line="127" column="32" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -60,7 +68,7 @@
       <file leaf-file-name="tune.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/tune.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="18225">
               <caret line="1233" column="34" selection-start-line="1233" selection-start-column="30" selection-end-line="1233" selection-end-column="34" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -69,15 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="offline-tape.core.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="buffered-pv.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
+            <state relative-caret-position="1125">
               <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
             </state>
           </provider>
@@ -86,7 +89,7 @@
       <file leaf-file-name="soundtouch.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/soundtouch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="5610">
               <caret line="394" column="20" selection-start-line="394" selection-start-column="8" selection-end-line="394" selection-end-column="20" />
             </state>
           </provider>
@@ -95,7 +98,7 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="345">
               <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
             </state>
           </provider>
@@ -104,7 +107,7 @@
       <file leaf-file-name="st.min.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/tuner2/st.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6066">
+            <state relative-caret-position="6870">
               <caret line="476" column="40" selection-start-line="476" selection-start-column="30" selection-end-line="476" selection-end-column="40" />
             </state>
           </provider>
@@ -114,36 +117,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>samples.</find>
-      <find>putsamples(</find>
-      <find>putsamples</find>
-      <find>stream</find>
-      <find>new simplefi</find>
-      <find>onaudio</find>
-      <find>source</find>
-      <find>soundtouch</find>
-      <find>soundtouch</find>
-      <find>simplefilter</find>
-      <find>use_auto</find>
-      <find>.ctx</find>
-      <find>soundtouc</find>
-      <find>waaplayer</find>
-      <find>default_se</find>
-      <find>_refreshBuffer</find>
-      <find>notegrainon</find>
-      <find>noteoff</find>
-      <find>pitchshi</find>
-      <find>pitchshift</find>
-      <find>classcallche</find>
-      <find>pitchsh</find>
-      <find>audiobuff</find>
-      <find>gainNode2</find>
-      <find>original</find>
-      <find>transpo</find>
       <find>transpose</find>
       <find>0.6</find>
       <find>disconnect</find>
       <find>setvalue</find>
+      <find>._pitch</find>
+      <find>vocode</find>
+      <find>o.vocode</find>
+      <find>pitchshi</find>
+      <find>o.pitch</find>
+      <find>waapl</find>
+      <find>waapla</find>
+      <find>decodeAudioData(</find>
+      <find>loadBuffer(</find>
+      <find>_vocode</find>
+      <find>pitchshift</find>
+      <find>loadbuff</find>
+      <find>impulse</find>
+      <find>crossfadehe</find>
+      <find>crossFadeHelperGainNode</find>
+      <find>gain</find>
+      <find>offlinectx2</find>
+      <find>gainNode</find>
+      <find>originalDuration</find>
+      <find>buffer2</find>
+      <find>_node</find>
+      <find>timeShiftBuffer</find>
+      <find>offlineCtx2</find>
+      <find>originalbuffe</find>
+      <find>gainnode</find>
+      <find>startren</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,6 +174,7 @@
         <option value="$PROJECT_DIR$/stretch/soundtouch.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/tape.core.js" />
+        <option value="$PROJECT_DIR$/src/plugins/biquad-filter.js" />
         <option value="$PROJECT_DIR$/stretch/waa-player.js" />
       </list>
     </option>
@@ -184,7 +188,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="825" />
@@ -281,12 +285,13 @@
       <workItem from="1539182945589" duration="78000" />
       <workItem from="1539184567912" duration="216000" />
       <workItem from="1539199513738" duration="854000" />
-      <workItem from="1539458219045" duration="14392000" />
+      <workItem from="1539458219045" duration="19054000" />
+      <workItem from="1539733610217" duration="2701000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72892000" />
+    <option name="totallyTimeSpent" value="80255000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -513,13 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="1376" column="4" selection-start-line="1376" selection-start-column="4" selection-end-line="1376" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/notes.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52095">
@@ -566,9 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
           <caret line="41" lean-forward="true" selection-start-line="11" selection-end-line="41" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -581,20 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugins/reverb.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="84" column="20" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,31 +609,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/tuner2/st.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6066">
+        <state relative-caret-position="6870">
           <caret line="476" column="40" selection-start-line="476" selection-start-column="30" selection-end-line="476" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stretch/buffered-pv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="1125">
           <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="345">
           <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/offline-tape.core.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/stretch/tune.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="18225">
           <caret line="1233" column="34" selection-start-line="1233" selection-start-column="30" selection-end-line="1233" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -662,22 +640,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stretch/soundtouch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="5610">
           <caret line="394" column="20" selection-start-line="394" selection-start-column="8" selection-end-line="394" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tape.core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="1223" column="59" selection-start-line="1223" selection-start-column="59" selection-end-line="1223" selection-end-column="59" />
+        <state relative-caret-position="12480">
+          <caret line="840" column="34" selection-start-line="840" selection-start-column="34" selection-end-line="840" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/reverb.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="83" column="13" lean-forward="true" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugins/biquad-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="1335" column="4" selection-start-line="1335" selection-start-column="4" selection-end-line="1335" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        <state relative-caret-position="306">
+          <caret line="127" column="32" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

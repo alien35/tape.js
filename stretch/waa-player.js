@@ -1,36 +1,40 @@
+/*
+ * STEPS:
+ * 1: Pitch shift
+ * 2: Time Shift
+ * 3: Remove zeroes
+ * 4: Export
+ */
+
 /* globals EqThree */
 
-async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
+async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) {
 
     var _pv = new BufferedPV(frameSize);
 
     return new Promise((resolve) => {
 
-        let originalDuration = audioBuffer.duration * speed;
-        originalDuration += 1;
+        let durationWithSpeedFactor = audioBuffer.duration * speed;
+        durationWithSpeedFactor += 1;
 
-        var offlineCtx = new OfflineAudioContext(2,44100*originalDuration,44100);
-        var offlineCtx2 = new OfflineAudioContext(2,44100*originalDuration,44100);
-        var pitchOfflineCtx = new OfflineAudioContext(2,44100*originalDuration,44100);
-        console.log(originalDuration, 'orig durationnn');
+        var pitchOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
+        // var offlineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
+        // var timeShiftOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
 
         var pitchShifter = new PitchShifter(pitchOfflineCtx, audioBuffer, 1024);
-        pitchShifter.pitch = 1.3;
+        pitchShifter.pitch = pitchShift || 1;
+        /*
         var pitchShiftGain = pitchOfflineCtx.createGain();
+        pitchShiftGain.gain.value = 1;
         pitchShiftGain.connect(pitchOfflineCtx.destination);
-        pitchShifter.connect(pitchShiftGain);
-        // pitchShiftGain.gain.setValueAtTime(0, originalDuration - 0.3);
-        // pitchShiftGain.gain.setTargetAtTime(0, originalDuration - 1.051, 0.1);
+        */
+        pitchShifter.connect(pitchOfflineCtx.destination);
 
         pitchOfflineCtx.startRendering().then(pitchedAudioBuffer => {
-            var buffer2 = offlineCtx2.createBufferSource();
 
+            var timeShiftOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
 
-            var originalBuffer = offlineCtx2.createBufferSource();
-            originalBuffer.buffer = pitchedAudioBuffer;
-
-
-            var _node = offlineCtx.createScriptProcessor(bufferSize, 2);
+            var timeShiftScriptProcessorNode = timeShiftOfflineCtx.createScriptProcessor(bufferSize, 2);
 
             _pv.set_audio_buffer(pitchedAudioBuffer);
 
@@ -54,7 +58,7 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
                 _canPlay = false;
             }
 
-            _node.onaudioprocess = function(e) {
+            timeShiftScriptProcessorNode.onaudioprocess = function(e) {
                 if (_canPlay) {
                     isProcessing ++;
                     if (_newAlpha != undefined) {
@@ -71,29 +75,24 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
                 }
             };
 
-            var gainNode = offlineCtx2.createGain();
+            timeShiftScriptProcessorNode.connect(timeShiftOfflineCtx.destination);
 
-
-            gainNode.connect(offlineCtx2.destination);
-
-            _node.connect(offlineCtx.destination);
-
-            gainNode.connect(offlineCtx2.destination);
-
-            var crossFadeHelperGainNode = offlineCtx2.createGain();
-            crossFadeHelperGainNode.gain.setValueAtTime(1, 0);
-
-
-            originalBuffer.connect(crossFadeHelperGainNode);
-            // TODO: DO WE NEED THIS??? crossFadeHelperGainNode.connect(offlineCtx2.destination);
-
+            // originalBuffer.connect(timeShiftOfflineCtx.destination);
 
             this.play();
-            offlineCtx.startRendering().then(renderedBuffer => {
+            timeShiftOfflineCtx.startRendering().then(renderedBuffer => {
+
+                var zeroedOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
 
                 const thisDuration = renderedBuffer.duration;
                 _canPlay = false;
-                // _node.disconnect();
+
+                const zeroedBuffer = zeroedOfflineCtx.createBufferSource();
+                zeroedBuffer.buffer = renderedBuffer;
+
+                zeroedBuffer.connect(zeroedOfflineCtx.destination);
+
+                // timeShiftScriptProcessorNode.disconnect();
 
                 // Let's just count the zeroes
                 var zerosFound = 0;
@@ -111,25 +110,23 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed) {
 
                 const zerosFoundWithHzScale = zerosFound / 44100;
 
-                // crossFadeHelperGainNode.gain.linearRampToValueAtTime(0, 0.3);
+                zeroedBuffer.start(0, zerosFoundWithHzScale);
 
-                gainNode.gain.value = 1;
-                // gainNode.gain.setValueAtTime(1, originalDuration - 0.5);
+                // gainNode.gain.value = 1;
+                // gainNode.gain.setValueAtTime(1, durationWithSpeedFactor - 0.5);
                 // gainNode.gain.setTargetAtTime(0, 3, 0.5);
                 // gainNode.gain.linearRampToValueAtTime(1, zerosFoundWithHzScale);
 
 
                 // resolve(modifiedBuffer);
 
+                // TODO: ADD THIS BACK originalBuffer.start(0, 0, zerosFoundWithHzScale);
 
-                buffer2.buffer = renderedBuffer;
-                buffer2.connect(gainNode);
+                /* TODO: FINAL RESOLVE
 
-                buffer2.start(0, zerosFoundWithHzScale);
-                originalBuffer.start(0, 0, zerosFoundWithHzScale);
-
-                offlineCtx2.startRendering().then(renderedBuffer2 => {
-                    resolve(renderedBuffer2)
+                */
+                zeroedOfflineCtx.startRendering().then(renderedZeroedBuffer => {
+                    resolve(renderedZeroedBuffer)
                 })
 
             });

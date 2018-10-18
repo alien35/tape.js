@@ -502,6 +502,7 @@
             self._rate = o.rate || 1;
             self._vocode = o.vocode;
             self._sprite = o.sprite || {};
+            self._pitchShift = o.pitchShift || 1;
             self._src = (typeof o.src !== 'string') ? o.src : [o.src];
             self._volume = o.volume !== undefined ? o.volume : 1;
             self._xhrWithCredentials = o.xhrWithCredentials || false;
@@ -921,7 +922,7 @@
                 self._destination = o.destination.node;
             }
             if (o.pitchShift) {
-                // self.effects[0].transpose = o.pitchShift;
+                self._pitchShift = o.pitchShift;
             }
         },
 
@@ -2361,7 +2362,7 @@
         var success = function(buffer) {
             if (buffer && self._sounds.length > 0) {
                 if (self._vocode) {
-                    WAAPlayer(buffer, 2048, 4096, self._rate).then(function(waaBuffer) {
+                    WAAPlayer(buffer, 2048, 4096, self._rate, self._pitchShift).then(function(waaBuffer) {
                         cache[self._src] = {main: buffer, vocoder: waaBuffer};
                         self._cachedBuffer = buffer;
                         self._cachedPreVocodedBuffer = waaBuffer;
