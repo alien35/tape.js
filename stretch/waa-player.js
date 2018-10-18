@@ -18,16 +18,10 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) 
         durationWithSpeedFactor += 1;
 
         var pitchOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
-        // var offlineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
-        // var timeShiftOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
 
         var pitchShifter = new PitchShifter(pitchOfflineCtx, audioBuffer, 1024);
         pitchShifter.pitch = pitchShift || 1;
-        /*
-        var pitchShiftGain = pitchOfflineCtx.createGain();
-        pitchShiftGain.gain.value = 1;
-        pitchShiftGain.connect(pitchOfflineCtx.destination);
-        */
+
         pitchShifter.connect(pitchOfflineCtx.destination);
 
         pitchOfflineCtx.startRendering().then(pitchedAudioBuffer => {
@@ -38,8 +32,8 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) 
 
             _pv.set_audio_buffer(pitchedAudioBuffer);
 
-            // speed is 0.8333
-            var _newAlpha = speed; // * (detuneValue * 0.0056); // target is detune = 200, speed = 0.93333
+
+            var _newAlpha = speed;
 
             _pv.alpha = speed;
 
@@ -77,8 +71,6 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) 
 
             timeShiftScriptProcessorNode.connect(timeShiftOfflineCtx.destination);
 
-            // originalBuffer.connect(timeShiftOfflineCtx.destination);
-
             this.play();
             timeShiftOfflineCtx.startRendering().then(renderedBuffer => {
 
@@ -91,8 +83,6 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) 
                 zeroedBuffer.buffer = renderedBuffer;
 
                 zeroedBuffer.connect(zeroedOfflineCtx.destination);
-
-                // timeShiftScriptProcessorNode.disconnect();
 
                 // Let's just count the zeroes
                 var zerosFound = 0;
@@ -112,19 +102,6 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) 
 
                 zeroedBuffer.start(0, zerosFoundWithHzScale);
 
-                // gainNode.gain.value = 1;
-                // gainNode.gain.setValueAtTime(1, durationWithSpeedFactor - 0.5);
-                // gainNode.gain.setTargetAtTime(0, 3, 0.5);
-                // gainNode.gain.linearRampToValueAtTime(1, zerosFoundWithHzScale);
-
-
-                // resolve(modifiedBuffer);
-
-                // TODO: ADD THIS BACK originalBuffer.start(0, 0, zerosFoundWithHzScale);
-
-                /* TODO: FINAL RESOLVE
-
-                */
                 zeroedOfflineCtx.startRendering().then(renderedZeroedBuffer => {
                     resolve(renderedZeroedBuffer)
                 })

@@ -673,7 +673,6 @@
                 clipDuration = input.clipDuration;
                 var fadeIn = input.fadeIn;
                 var fadeOut = input.fadeRight;
-
             }
 
 
@@ -797,16 +796,16 @@
                     sound._playStart = self.machine.ctx.currentTime;
 
 
+                    // Start a new timer if none is present.
+                    if (timeout !== Infinity) {
+                        self._endTimers[sound._id] = setTimeout(self._ended.bind(self, sound), timeout);
+                    }
+
                     // Play the sound using the supported method.
                     if (typeof node.bufferSource.start === 'undefined') {
                         sound._loop ? node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset) : node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset);
                     } else {
                         sound._loop ? node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset) : node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset);
-                    }
-
-                    // Start a new timer if none is present.
-                    if (timeout !== Infinity) {
-                        self._endTimers[sound._id] = setTimeout(self._ended.bind(self, sound), timeout);
                     }
 
                     if (!internal) {
@@ -1871,6 +1870,7 @@
          * @return {Reel}
          */
         _ended: function(sound) {
+            console.log('ended!!', sound)
             var self = this;
             var sprite = sound._sprite;
 
@@ -2056,6 +2056,7 @@
          * @return {Reel}
          */
         _refreshBuffer: function(sound) {
+
             var self = this;
 
             // Setup the buffer source for playback.
