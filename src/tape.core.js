@@ -8,6 +8,10 @@
  *  MIT License
  */
 
+// vocoder: time shifted
+// pitched: pitch shifted
+
+
 (function() {
 
     'use strict';
@@ -1668,6 +1672,7 @@
          */
         unload: function() {
             var self = this;
+            console.log(self, 'selffff')
 
             // Stop playing any active sounds.
             var sounds = self._sounds;
@@ -1679,15 +1684,16 @@
 
                 // Remove the source or disconnect.
                 if (!self._webAudio) {
+                    console.log()
                     // Set the source to 0-second silence to stop any downloading (except in IE).
-                    var checkIE = /MSIE |Trident\//.test(self._parent.machine._navigator && self._parent.machine._navigator.userAgent);
+                    var checkIE = /MSIE |Trident\//.test(self.machine._navigator && self.machine_navigator.userAgent);
                     if (!checkIE) {
                         sounds[i]._node.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
                     }
 
                     // Remove any event listeners.
                     sounds[i]._node.removeEventListener('error', sounds[i]._errorFn, false);
-                    sounds[i]._node.removeEventListener(self._parent.machine._canPlayEvent, sounds[i]._loadFn, false);
+                    sounds[i]._node.removeEventListener(self.machine._canPlayEvent, sounds[i]._loadFn, false);
                 }
 
                 // Empty out all of the nodes.
@@ -1698,15 +1704,15 @@
             }
 
             // Remove the references in the global TapeMachine object.
-            var index = self._parent.machine._reels.indexOf(self);
+            var index = self.machine._reels.indexOf(self);
             if (index >= 0) {
-                self._parent.machine._reels.splice(index, 1);
+                self.machine._reels.splice(index, 1);
             }
 
             // Delete this sound from the cache (if no other Reel is using it).
             var remCache = true;
-            for (i=0; i<self._parent.machine._reels.length; i++) {
-                if (self._parent.machine._reels[i]._src === self._src) {
+            for (i=0; i<self.machine._reels.length; i++) {
+                if (self.machine._reels[i]._src === self._src) {
                     remCache = false;
                     break;
                 }
@@ -1717,7 +1723,7 @@
             }
 
             // Clear global errors.
-            self._parent.machine.noAudio = false;
+            self.machine.noAudio = false;
 
             // Clear out `self`.
             self._state = 'unloaded';
@@ -1870,7 +1876,6 @@
          * @return {Reel}
          */
         _ended: function(sound) {
-            console.log('ended!!', sound)
             var self = this;
             var sprite = sound._sprite;
 
@@ -2363,12 +2368,19 @@
         var success = function(buffer) {
             if (buffer && self._sounds.length > 0) {
                 if (self._vocode) {
-                    WAAPlayer(buffer, 2048, 4096, self._rate, self._pitchShift).then(function(waaBuffer) {
-                        cache[self._src] = {main: buffer, vocoder: waaBuffer};
+                    if (self._rate === 1 && self._pitchShift === 1) {
+                        cache[self._src] = {main: buffer, vocoder: buffer};
                         self._cachedBuffer = buffer;
-                        self._cachedPreVocodedBuffer = waaBuffer;
-                        loadSound(self, waaBuffer);
-                    })
+                        self._cachedPreVocodedBuffer = buffer;
+                        loadSound(self, buffer);
+                    } else {
+                        WAAPlayer(buffer, 2048, 4096, self._rate, self._pitchShift).then(function(waaBuffer) {
+                            cache[self._src] = {main: buffer, vocoder: waaBuffer};
+                            self._cachedBuffer = buffer;
+                            self._cachedPreVocodedBuffer = waaBuffer;
+                            loadSound(self, waaBuffer);
+                        })
+                    }
                 } else {
                     cache[self._src] = {main: buffer, vocoder: null};
                     self._cachedBuffer = buffer;

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95cf16b2-f182-4dc4-8ca5-c3f6a4611ae4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/tape.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/tape.core.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tape.core.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tape.core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stretch/waa-player.js" beforeDir="false" afterPath="$PROJECT_DIR$/stretch/waa-player.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tape.core.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tape.core.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="981" column="62" selection-start-line="981" selection-start-column="53" selection-end-line="981" selection-end-column="62" />
+            <state relative-caret-position="180">
+              <caret line="1875" column="33" selection-start-line="1875" selection-start-column="33" selection-end-line="1875" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="waa-player.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="127" column="32" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
+            <state relative-caret-position="198">
+              <caret line="206" column="31" selection-start-line="206" selection-start-column="30" selection-end-line="206" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -115,15 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>waapla</find>
-      <find>decodeAudioData(</find>
-      <find>loadBuffer(</find>
-      <find>_vocode</find>
-      <find>pitchshift</find>
-      <find>loadbuff</find>
-      <find>impulse</find>
-      <find>crossfadehe</find>
-      <find>crossFadeHelperGainNode</find>
       <find>gain</find>
       <find>offlinectx2</find>
       <find>gainNode</find>
@@ -134,7 +125,6 @@
       <find>offlineCtx2</find>
       <find>originalbuffe</find>
       <find>gainnode</find>
-      <find>startren</find>
       <find>cache</find>
       <find>.disconnect</find>
       <find>_refreshbuffer</find>
@@ -145,6 +135,16 @@
       <find>refreshbuff</find>
       <find>console</find>
       <find>.duration</find>
+      <find>startren</find>
+      <find>waaplayer</find>
+      <find>vocoder:</find>
+      <find>.vocoder</find>
+      <find>pi</find>
+      <find>pitchshift</find>
+      <find>waapla</find>
+      <find>pitchedaudio</find>
+      <find>!</find>
+      <find>!!</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,8 +171,8 @@
         <option value="$PROJECT_DIR$/tests/tuner2/st.min.js" />
         <option value="$PROJECT_DIR$/stretch/soundtouch.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/stretch/waa-player.js" />
         <option value="$PROJECT_DIR$/src/plugins/biquad-filter.js" />
+        <option value="$PROJECT_DIR$/stretch/waa-player.js" />
         <option value="$PROJECT_DIR$/src/tape.core.js" />
       </list>
     </option>
@@ -284,12 +284,12 @@
       <workItem from="1539184567912" duration="216000" />
       <workItem from="1539199513738" duration="854000" />
       <workItem from="1539458219045" duration="19054000" />
-      <workItem from="1539733610217" duration="7080000" />
+      <workItem from="1539733610217" duration="10062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84634000" />
+    <option name="totallyTimeSpent" value="87616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -669,20 +669,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tape.core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="981" column="62" selection-start-line="981" selection-start-column="53" selection-end-line="981" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stretch/waa-player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="127" column="32" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
+        <state relative-caret-position="198">
+          <caret line="206" column="31" selection-start-line="206" selection-start-column="30" selection-end-line="206" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tape.core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="1875" column="33" selection-start-line="1875" selection-start-column="33" selection-end-line="1875" selection-end-column="33" />
         </state>
       </provider>
     </entry>
