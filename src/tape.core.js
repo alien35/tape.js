@@ -1418,7 +1418,6 @@
 
         getBuffer: function() {
             var self = this;
-            console.log(self, 'selfff...');
             const cachedResult = cache[self._src];
             return cachedResult.vocoder || cachedResult.main;
         },
