@@ -1416,6 +1416,13 @@
             return self;
         },
 
+        getBuffer: function() {
+            var self = this;
+            console.log(self, 'selfff...');
+            const cachedResult = cache[self._src];
+            return cachedResult.vocoder || cachedResult.main;
+        },
+
         /**
          * Get/set the playback rate of a sound. This method can optionally take 0, 1 or 2 arguments.
          *   rate() -> Returns the first sound node's current playback rate.
