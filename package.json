@@ -21,7 +21,7 @@
     "url": "git://github.com/goldfire/tape.js.git"
   },
   "scripts": {
-    "build": "cat stretch/soundtouch.js stretch/buffered-pv.js stretch/cbuffer.js stretch/dsp.js stretch/PV_fast_5.js stretch/waa-player.js src/tape.core.js src/offline-tape.core.js src/plugins/reverb.js src/plugins/gain.js src/plugins/distortion.js src/plugins/biquad-filter.js src/instruments/synth-one.js src/instruments/sample-player.js src/instruments/offline-instruments/offline-synth-one.js src/plugins/offline-plugins/offline-distortion.js src/plugins/offline-plugins/offline-eq.js src/plugins/offline-plugins/offline-gain.js src/plugins/offline-plugins/offline-reverb.js | uglifyjs -m -c -o dist/tape.core.min.js"
+    "build": "cat stretch/soundtouch.js stretch/waa-player.js src/tape.core.js src/offline-tape.core.js src/plugins/reverb.js src/plugins/gain.js src/plugins/distortion.js src/plugins/biquad-filter.js src/instruments/synth-one.js src/instruments/sample-player.js src/instruments/offline-instruments/offline-synth-one.js src/plugins/offline-plugins/offline-distortion.js src/plugins/offline-plugins/offline-eq.js src/plugins/offline-plugins/offline-gain.js src/plugins/offline-plugins/offline-reverb.js | uglifyjs -m -c -o dist/tape.core.min.js"
   },
   "devDependencies": {
     "js-obfuscator": "^0.1.3",

@@ -10,7 +10,6 @@ class GainProcessor extends AudioWorkletProcessor {
     constructor() {
         // The super constructor call is required.
         super();
-        var _pv = new BufferedPV(frameSize);
         console.log('in constructor??')
     }
 
