@@ -461,6 +461,110 @@
     var TapeMachine4 = new TapeMachineGlobal();
     var TapeMachine5 = new TapeMachineGlobal();
 
+
+    /**
+     * Setup the audio context when available, or switch to HTML5 Audio mode.
+     */
+    var setupAudioContext = function() {
+        // Check if we are using Web Audio and setup the AudioContext if we are.
+        try {
+            if (typeof AudioContext !== 'undefined') {
+                TapeMachine0.ctx = new AudioContext();
+                TapeMachine1.ctx = new AudioContext();
+                TapeMachine2.ctx = new AudioContext();
+                TapeMachine3.ctx = new AudioContext();
+                TapeMachine4.ctx = new AudioContext();
+                TapeMachine5.ctx = new AudioContext();
+            } else if (typeof webkitAudioContext !== 'undefined') {
+                TapeMachine0.ctx = new webkitAudioContext();
+                TapeMachine1.ctx = new webkitAudioContext();
+                TapeMachine2.ctx = new webkitAudioContext();
+                TapeMachine3.ctx = new webkitAudioContext();
+                TapeMachine4.ctx = new webkitAudioContext();
+                TapeMachine5.ctx = new webkitAudioContext();
+            } else {
+                TapeMachine0.usingWebAudio = false;
+                TapeMachine1.usingWebAudio = false;
+                TapeMachine2.usingWebAudio = false;
+                TapeMachine3.usingWebAudio = false;
+                TapeMachine4.usingWebAudio = false;
+                TapeMachine5.usingWebAudio = false;
+            }
+            /*
+            TapeMachine0.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine1.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine2.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine3.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine4.ctx.audioWorklet.addModule('gain-processor.js');
+            TapeMachine5.ctx.audioWorklet.addModule('gain-processor.js');
+            */
+        } catch(e) {
+            TapeMachine0.usingWebAudio = false;
+            TapeMachine1.usingWebAudio = false;
+            TapeMachine2.usingWebAudio = false;
+            TapeMachine3.usingWebAudio = false;
+            TapeMachine4.usingWebAudio = false;
+            TapeMachine5.usingWebAudio = false;
+        }
+
+        // Check if a webview is being used on iOS8 or earlier (rather than the browser).
+        // If it is, disable Web Audio as it causes crashing.
+        var iOS = (/iP(hone|od|ad)/.test(TapeMachine0._navigator && TapeMachine0._navigator.platform));
+        var appVersion = TapeMachine0._navigator && TapeMachine0._navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/);
+        var version = appVersion ? parseInt(appVersion[1], 10) : null;
+        if (iOS && version && version < 9) {
+            var safari = /safari/.test(TapeMachine0._navigator && TapeMachine0._navigator.userAgent.toLowerCase());
+            if (TapeMachine0._navigator && TapeMachine0._navigator.standalone && !safari || TapeMachine0._navigator && !TapeMachine0._navigator.standalone && !safari) {
+                TapeMachine0.usingWebAudio = false;
+                TapeMachine1.usingWebAudio = false;
+                TapeMachine2.usingWebAudio = false;
+                TapeMachine3.usingWebAudio = false;
+                TapeMachine4.usingWebAudio = false;
+                TapeMachine5.usingWebAudio = false;
+            }
+        }
+
+        // Create and expose the master GainNode when using Web Audio (useful for plugins or advanced usage).
+        if (TapeMachine0.usingWebAudio) {
+            TapeMachine0.masterGain = (typeof TapeMachine0.ctx.createGain === 'undefined') ? TapeMachine0.ctx.createGainNode() : TapeMachine0.ctx.createGain();
+            TapeMachine0.masterGain.gain.setValueAtTime(TapeMachine0._muted ? 0 : 1, TapeMachine0.ctx.currentTime);
+            TapeMachine0.masterGain.connect(TapeMachine0.ctx.destination);
+
+            TapeMachine1.masterGain = (typeof TapeMachine1.ctx.createGain === 'undefined') ? TapeMachine1.ctx.createGainNode() : TapeMachine1.ctx.createGain();
+            TapeMachine1.masterGain.gain.setValueAtTime(TapeMachine1._muted ? 0 : 1, TapeMachine1.ctx.currentTime);
+            TapeMachine1.masterGain.connect(TapeMachine1.ctx.destination);
+
+            TapeMachine2.masterGain = (typeof TapeMachine2.ctx.createGain === 'undefined') ? TapeMachine2.ctx.createGainNode() : TapeMachine2.ctx.createGain();
+            TapeMachine2.masterGain.gain.setValueAtTime(TapeMachine2._muted ? 0 : 1, TapeMachine2.ctx.currentTime);
+            TapeMachine2.masterGain.connect(TapeMachine2.ctx.destination);
+
+            TapeMachine3.masterGain = (typeof TapeMachine3.ctx.createGain === 'undefined') ? TapeMachine3.ctx.createGainNode() : TapeMachine3.ctx.createGain();
+            TapeMachine3.masterGain.gain.setValueAtTime(TapeMachine3._muted ? 0 : 1, TapeMachine3.ctx.currentTime);
+            TapeMachine3.masterGain.connect(TapeMachine3.ctx.destination);
+
+            TapeMachine4.masterGain = (typeof TapeMachine4.ctx.createGain === 'undefined') ? TapeMachine4.ctx.createGainNode() : TapeMachine4.ctx.createGain();
+            TapeMachine4.masterGain.gain.setValueAtTime(TapeMachine4._muted ? 0 : 1, TapeMachine4.ctx.currentTime);
+            TapeMachine4.masterGain.connect(TapeMachine4.ctx.destination);
+
+            TapeMachine5.masterGain = (typeof TapeMachine5.ctx.createGain === 'undefined') ? TapeMachine5.ctx.createGainNode() : TapeMachine5.ctx.createGain();
+            TapeMachine5.masterGain.gain.setValueAtTime(TapeMachine5._muted ? 0 : 1, TapeMachine5.ctx.currentTime);
+            TapeMachine5.masterGain.connect(TapeMachine5.ctx.destination);
+        }
+
+        // Re-run the setup on TapeMachine.
+        TapeMachine0._setup();
+        TapeMachine1._setup();
+        TapeMachine2._setup();
+        TapeMachine3._setup();
+        TapeMachine4._setup();
+        TapeMachine5._setup();
+    };
+
+
+    setupAudioContext();
+
+    
+
     /** Group Methods **/
     /***************************************************************************/
 
@@ -1678,7 +1782,6 @@
          */
         unload: function() {
             var self = this;
-            console.log(self, 'selffff')
 
             // Stop playing any active sounds.
             var sounds = self._sounds;
@@ -1690,7 +1793,6 @@
 
                 // Remove the source or disconnect.
                 if (!self._webAudio) {
-                    console.log()
                     // Set the source to 0-second silence to stop any downloading (except in IE).
                     var checkIE = /MSIE |Trident\//.test(self.machine._navigator && self.machine_navigator.userAgent);
                     if (!checkIE) {
@@ -2429,104 +2531,6 @@
             self._emit('load');
             self._loadQueue();
         }
-    };
-
-    /**
-     * Setup the audio context when available, or switch to HTML5 Audio mode.
-     */
-    var setupAudioContext = function() {
-        // Check if we are using Web Audio and setup the AudioContext if we are.
-        try {
-            if (typeof AudioContext !== 'undefined') {
-                TapeMachine0.ctx = new AudioContext();
-                TapeMachine1.ctx = new AudioContext();
-                TapeMachine2.ctx = new AudioContext();
-                TapeMachine3.ctx = new AudioContext();
-                TapeMachine4.ctx = new AudioContext();
-                TapeMachine5.ctx = new AudioContext();
-            } else if (typeof webkitAudioContext !== 'undefined') {
-                TapeMachine0.ctx = new webkitAudioContext();
-                TapeMachine1.ctx = new webkitAudioContext();
-                TapeMachine2.ctx = new webkitAudioContext();
-                TapeMachine3.ctx = new webkitAudioContext();
-                TapeMachine4.ctx = new webkitAudioContext();
-                TapeMachine5.ctx = new webkitAudioContext();
-            } else {
-                TapeMachine0.usingWebAudio = false;
-                TapeMachine1.usingWebAudio = false;
-                TapeMachine2.usingWebAudio = false;
-                TapeMachine3.usingWebAudio = false;
-                TapeMachine4.usingWebAudio = false;
-                TapeMachine5.usingWebAudio = false;
-            }
-            /*
-            TapeMachine0.ctx.audioWorklet.addModule('gain-processor.js');
-            TapeMachine1.ctx.audioWorklet.addModule('gain-processor.js');
-            TapeMachine2.ctx.audioWorklet.addModule('gain-processor.js');
-            TapeMachine3.ctx.audioWorklet.addModule('gain-processor.js');
-            TapeMachine4.ctx.audioWorklet.addModule('gain-processor.js');
-            TapeMachine5.ctx.audioWorklet.addModule('gain-processor.js');
-            */
-        } catch(e) {
-            TapeMachine0.usingWebAudio = false;
-            TapeMachine1.usingWebAudio = false;
-            TapeMachine2.usingWebAudio = false;
-            TapeMachine3.usingWebAudio = false;
-            TapeMachine4.usingWebAudio = false;
-            TapeMachine5.usingWebAudio = false;
-        }
-
-        // Check if a webview is being used on iOS8 or earlier (rather than the browser).
-        // If it is, disable Web Audio as it causes crashing.
-        var iOS = (/iP(hone|od|ad)/.test(TapeMachine0._navigator && TapeMachine0._navigator.platform));
-        var appVersion = TapeMachine0._navigator && TapeMachine0._navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/);
-        var version = appVersion ? parseInt(appVersion[1], 10) : null;
-        if (iOS && version && version < 9) {
-            var safari = /safari/.test(TapeMachine0._navigator && TapeMachine0._navigator.userAgent.toLowerCase());
-            if (TapeMachine0._navigator && TapeMachine0._navigator.standalone && !safari || TapeMachine0._navigator && !TapeMachine0._navigator.standalone && !safari) {
-                TapeMachine0.usingWebAudio = false;
-                TapeMachine1.usingWebAudio = false;
-                TapeMachine2.usingWebAudio = false;
-                TapeMachine3.usingWebAudio = false;
-                TapeMachine4.usingWebAudio = false;
-                TapeMachine5.usingWebAudio = false;
-            }
-        }
-
-        // Create and expose the master GainNode when using Web Audio (useful for plugins or advanced usage).
-        if (TapeMachine0.usingWebAudio) {
-            TapeMachine0.masterGain = (typeof TapeMachine0.ctx.createGain === 'undefined') ? TapeMachine0.ctx.createGainNode() : TapeMachine0.ctx.createGain();
-            TapeMachine0.masterGain.gain.setValueAtTime(TapeMachine0._muted ? 0 : 1, TapeMachine0.ctx.currentTime);
-            TapeMachine0.masterGain.connect(TapeMachine0.ctx.destination);
-
-            TapeMachine1.masterGain = (typeof TapeMachine1.ctx.createGain === 'undefined') ? TapeMachine1.ctx.createGainNode() : TapeMachine1.ctx.createGain();
-            TapeMachine1.masterGain.gain.setValueAtTime(TapeMachine1._muted ? 0 : 1, TapeMachine1.ctx.currentTime);
-            TapeMachine1.masterGain.connect(TapeMachine1.ctx.destination);
-
-            TapeMachine2.masterGain = (typeof TapeMachine2.ctx.createGain === 'undefined') ? TapeMachine2.ctx.createGainNode() : TapeMachine2.ctx.createGain();
-            TapeMachine2.masterGain.gain.setValueAtTime(TapeMachine2._muted ? 0 : 1, TapeMachine2.ctx.currentTime);
-            TapeMachine2.masterGain.connect(TapeMachine2.ctx.destination);
-
-            TapeMachine3.masterGain = (typeof TapeMachine3.ctx.createGain === 'undefined') ? TapeMachine3.ctx.createGainNode() : TapeMachine3.ctx.createGain();
-            TapeMachine3.masterGain.gain.setValueAtTime(TapeMachine3._muted ? 0 : 1, TapeMachine3.ctx.currentTime);
-            TapeMachine3.masterGain.connect(TapeMachine3.ctx.destination);
-
-            TapeMachine4.masterGain = (typeof TapeMachine4.ctx.createGain === 'undefined') ? TapeMachine4.ctx.createGainNode() : TapeMachine4.ctx.createGain();
-            TapeMachine4.masterGain.gain.setValueAtTime(TapeMachine4._muted ? 0 : 1, TapeMachine4.ctx.currentTime);
-            TapeMachine4.masterGain.connect(TapeMachine4.ctx.destination);
-
-            TapeMachine5.masterGain = (typeof TapeMachine5.ctx.createGain === 'undefined') ? TapeMachine5.ctx.createGainNode() : TapeMachine5.ctx.createGain();
-            TapeMachine5.masterGain.gain.setValueAtTime(TapeMachine5._muted ? 0 : 1, TapeMachine5.ctx.currentTime);
-            TapeMachine5.masterGain.connect(TapeMachine5.ctx.destination);
-        }
-
-        // Re-run the setup on TapeMachine.
-        TapeMachine0._setup();
-        TapeMachine1._setup();
-        TapeMachine2._setup();
-        TapeMachine3._setup();
-        TapeMachine4._setup();
-        TapeMachine5._setup();
     };
 
     /****************************************************************************************/
