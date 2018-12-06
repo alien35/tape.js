@@ -150,7 +150,7 @@ noteToFrequencyDictionary = {
             return self;
         },
 
-        triggerAttack(note) {
+        triggerAttack(note, duration) {
             var self = this;
 
             self.activeEvents[note] = {
@@ -178,9 +178,18 @@ noteToFrequencyDictionary = {
                 self.activeEvents[note].osc2.start(self.machine.ctx.currentTime);
             } catch(err) {}
 
+            // START TIME
             self.activeEvents[note].gainNode.gain.setValueAtTime(0, self.machine.ctx.currentTime);
             self.activeEvents[note].gainNode.gain.setTargetAtTime(1, self.machine.ctx.currentTime, self.attackTime);
             self.activeEvents[note].gainNode.gain.setTargetAtTime(0.05, self.machine.ctx.currentTime + self.decayTime + self.attackTime, 1);
+
+            // CANCEL EVENTS
+            if (duration) {
+                self.activeEvents[note].gainNode.gain.cancelScheduledValues(self.machine.ctx.currentTime + duration);
+                self.activeEvents[note].gainNode.gain.setTargetAtTime(0, self.machine.ctx.currentTime + self.releaseTime + duration, 0.5);
+                self.activeEvents[note].osc1.stop(self.machine.ctx.currentTime + duration);
+                self.activeEvents[note].osc2.stop(self.machine.ctx.currentTime + duration);
+            }
 
             return self;
         },

@@ -54,7 +54,7 @@
             self.ctx = null;
 
             // Set to false to disable the auto iOS enabler.
-            self.mobileAutoEnable = true;
+            self.mobileAutoEnable = false;
 
             // Setup the various state values for global tracking.
             self._setup();
@@ -74,7 +74,7 @@
 
             // If we don't have an AudioContext created yet, run the setup.
             if (!self.ctx) {
-                setupAudioContext();
+                // TODO: Should Already exist. might cause mismatched audio contexts. setupAudioContext();
             }
 
             if (typeof vol !== 'undefined' && vol >= 0 && vol <= 1) {
@@ -122,7 +122,7 @@
 
             // If we don't have an AudioContext created yet, run the setup.
             if (!self.ctx) {
-                setupAudioContext();
+                // TODO: Should Already exist. might cause mismatched audio contexts. setupAudioContext();
             }
 
             self._muted = muted;
@@ -167,7 +167,7 @@
             if (self.usingWebAudio && self.ctx && typeof self.ctx.close !== 'undefined') {
                 self.ctx.close();
                 self.ctx = null;
-                setupAudioContext();
+                // TODO: Should Already exist. might cause mismatched audio contexts. setupAudioContext();
             }
 
             return self;
@@ -476,12 +476,13 @@
                 TapeMachine4.ctx = new AudioContext();
                 TapeMachine5.ctx = new AudioContext();
             } else if (typeof webkitAudioContext !== 'undefined') {
-                TapeMachine0.ctx = new webkitAudioContext();
-                TapeMachine1.ctx = new webkitAudioContext();
-                TapeMachine2.ctx = new webkitAudioContext();
-                TapeMachine3.ctx = new webkitAudioContext();
-                TapeMachine4.ctx = new webkitAudioContext();
-                TapeMachine5.ctx = new webkitAudioContext();
+                const wkaCtxInstance = new webkitAudioContext();
+                TapeMachine0.ctx = wkaCtxInstance;
+                TapeMachine1.ctx = wkaCtxInstance;
+                TapeMachine2.ctx = wkaCtxInstance;
+                TapeMachine3.ctx = wkaCtxInstance;
+                TapeMachine4.ctx = wkaCtxInstance;
+                TapeMachine5.ctx = wkaCtxInstance;
             } else {
                 TapeMachine0.usingWebAudio = false;
                 TapeMachine1.usingWebAudio = false;
@@ -596,7 +597,7 @@
 
             // If we don't have an AudioContext created yet, run the setup.
             if (!TapeMachine0.ctx) {
-                setupAudioContext();
+                // TODO: Should Already exist. might cause mismatched audio contexts. setupAudioContext();
             }
 
             // Setup user-defined default properties.
@@ -1026,7 +1027,13 @@
                 self._rate = o.rate;
             }
             if (o.destination) {
-                self._destination = o.destination.node;
+               
+                // self._destination.disconnect();
+                // self._destination = o.destination.node;
+               
+                // self._destination.connect(o.destination.node);
+                // self._destination.context = (o.destination.node.machine);
+                // self._destination = o.destination.node;
             }
             if (o.pitchShift) {
                 self._pitchShift = o.pitchShift;

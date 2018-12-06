@@ -12,8 +12,6 @@ async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) 
 
     return new Promise((resolve) => {
 
-        console.log(pitchShift, 'pitchShift....', speed, 'speed....')
-
         if (pitchShift === 1) {
             return processSpeed(audioBuffer, speed, resolve, bufferSize);
         } else if (speed === 1) {
