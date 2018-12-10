@@ -8,37 +8,37 @@
 
 /* globals EqThree */
 
-async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift) {
+async function WAAPlayer(audioBuffer, frameSize, bufferSize, speed, pitchShift, beats) {
 
     return new Promise((resolve) => {
 
         if (pitchShift === 1) {
-            return processSpeed(audioBuffer, speed, resolve, bufferSize);
+            return processSpeed(audioBuffer, speed, resolve, bufferSize, beats);
         } else if (speed === 1) {
-            return processPitch(audioBuffer, speed, resolve, bufferSize, pitchShift);
+            return processPitch(audioBuffer, speed, resolve, bufferSize, pitchShift, beats);
         } else {
-            return processAll(audioBuffer, speed, resolve, bufferSize, pitchShift);
+            return processAll(audioBuffer, speed, resolve, bufferSize, pitchShift, beats);
         }
     })
 
 }
 
-function processSpeed(audioBuffer, speed, resolve, bufferSize) {
-    let durationWithSpeedFactor = audioBuffer.duration * speed;
-    durationWithSpeedFactor += 1;
+function processSpeed(audioBuffer, speed, resolve, bufferSize, beats) {
+    let durationWithSpeedFactor = beats / speed;
+    durationWithSpeedFactor -= (durationWithSpeedFactor / 3.4224598930481283);
 
-    var pitchOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
+    var pitchOfflineCtx = new OfflineAudioContext(2,44100*(durationWithSpeedFactor),44100);
 
     var pitchShifter = new PitchShifter(pitchOfflineCtx, audioBuffer, 1024);
-    const flippedSpeed = speed >= 1 ? 1.03 - (speed - 1) : 1.03 + (1 - speed);
+    const t = speed >= 1 ? 1.1305 - (speed - 1) : 1.1305 + (1 - speed); // 1.5
+    const flippedSpeed = t; // speed >= 1 ? 1.03 - (speed - 1) : 1.03 + (1 - speed); // 1.51
     pitchShifter.tempo = flippedSpeed;
 
     pitchShifter.connect(pitchOfflineCtx.destination);
 
     pitchOfflineCtx.startRendering().then(renderedBuffer => {
 
-
-        var zeroedOfflineCtx = new OfflineAudioContext(2,44100*durationWithSpeedFactor,44100);
+        var zeroedOfflineCtx = new OfflineAudioContext(2,44100*(durationWithSpeedFactor),44100);
 
         const thisDuration = renderedBuffer.duration;
 

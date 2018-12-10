@@ -19,10 +19,57 @@
     /** Global Methods **/
     /***************************************************************************/
 
+
+    var waveArray = new Float32Array(19);
+    waveArray[0] = 0.0;
+    waveArray[1] = 0.00724;
+    waveArray[2] = 0.01594;
+    waveArray[3] = 0.0268;
+    waveArray[4] = 0.04022;
+    waveArray[5] = 0.05813;
+    waveArray[6] = 0.08227;
+    waveArray[7] = 0.11741;
+    waveArray[8] = 0.17249;
+    waveArray[9] = 0.27165;
+    waveArray[10] = 0.5;
+    waveArray[11] = 0.7344;
+    waveArray[12] = 0.8355;
+    waveArray[13] = 0.8885;
+    waveArray[14] = 0.9234;
+    waveArray[15] = 0.9479;
+    waveArray[16] = 0.9657;
+    waveArray[17] = 0.9793;
+    waveArray[18] = 0.9901;
+    waveArray[19] = 0.9988;
+    waveArray[20] = 1;
+    var waveArrayBackwards = new Float32Array(19);
+    waveArrayBackwards[0] = 1;
+    waveArrayBackwards[1] = 0.9988;
+    waveArrayBackwards[2] = 0.9901;
+    waveArrayBackwards[3] = 0.9793;
+    waveArrayBackwards[4] = 0.9657;
+    waveArrayBackwards[5] = 0.9479;
+    waveArrayBackwards[6] = 0.9234;
+    waveArrayBackwards[7] = 0.8885;
+    waveArrayBackwards[8] = 0.8355;
+    waveArrayBackwards[9] = 0.7344;
+    waveArrayBackwards[10] = 0.5;
+    waveArrayBackwards[11] = 0.27615;
+    waveArrayBackwards[12] = 0.17249;
+    waveArrayBackwards[13] = 0.11741;
+    waveArrayBackwards[14] = 0.08227;
+    waveArrayBackwards[15] = .05813;
+    waveArrayBackwards[16] = 0.04022;
+    waveArrayBackwards[17] = 0.0268;
+    waveArrayBackwards[18] = 0.01594;
+    waveArrayBackwards[19] = 0.00724;
+    waveArrayBackwards[20] = 0.0;
+
     /**
      * Create the global controller. All contained methods and properties apply
      * to all sounds that are currently playing or will be in the future.
      */
+    
 
     var TapeMachineGlobal = function() {
         this.init();
@@ -448,7 +495,9 @@
             var self = this;
 
             self._reels.forEach(function(reel) {
-                reel.stop();
+                if (reel.playing()) {
+                    reel.stop();
+                }
             })
         }
     };
@@ -609,6 +658,7 @@
             self._pool = o.pool || 5;
             self._preload = (typeof o.preload === 'boolean') ? o.preload : true;
             self._rate = o.rate || 1;
+            self._beats = o.beats;
             self._vocode = o.vocode;
             self._sprite = o.sprite || {};
             self._pitchShift = o.pitchShift || 1;
@@ -771,7 +821,7 @@
             var self = this;
             var id = null;
 
-            var startTime, clipOffset, clipDuration;
+            var startTime, clipOffset, clipDuration, offsetRight;
             if (!input) {
                 startTime = 0;
                 clipOffset = 0;
@@ -780,8 +830,9 @@
                 startTime = input.startTime;
                 clipOffset = input.clipOffset;
                 clipDuration = input.clipDuration;
+                offsetRight = input.offsetRight;
                 var fadeIn = input.fadeIn;
-                var fadeOut = input.fadeRight;
+                var fadeOut = input.fadeOut;
             }
 
 
@@ -901,7 +952,16 @@
 
                     // Setup the playback params.
                     var vol = (sound._muted || self._muted) ? 0 : sound._volume;
-                    node.gain.setValueAtTime(vol, self.machine.ctx.currentTime);
+                    
+                    if (fadeIn > 0) {
+                        node.gain.setValueCurveAtTime(waveArray, self.machine.ctx.currentTime + (startTime - clipOffset), fadeIn);
+                    } else {
+                        node.gain.setValueAtTime(vol, self.machine.ctx.currentTime);
+                    }
+                    if (fadeOut > 0) {
+                        node.gain.setValueCurveAtTime(waveArrayBackwards, self.machine.ctx.currentTime + clipDuration - fadeOut, fadeOut);
+                    }
+                    
                     sound._playStart = self.machine.ctx.currentTime;
 
 
@@ -912,9 +972,9 @@
 
                     // Play the sound using the supported method.
                     if (typeof node.bufferSource.start === 'undefined') {
-                        sound._loop ? node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset) : node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset);
+                        sound._loop ? node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset, clipDuration) : node.bufferSource.noteGrainOn(self.machine.ctx.currentTime + startTime, clipOffset, clipDuration);
                     } else {
-                        sound._loop ? node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset) : node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset);
+                        sound._loop ? node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset, clipDuration) : node.bufferSource.start(self.machine.ctx.currentTime + startTime, clipOffset, clipDuration);
                     }
 
                     if (!internal) {
@@ -1085,12 +1145,16 @@
                             if (!sound._node.bufferSource) {
                                 continue;
                             }
-
-                            if (typeof sound._node.bufferSource.stop === 'undefined') {
-                                sound._node.bufferSource.noteOff(0);
-                            } else {
-                                sound._node.bufferSource.stop(0);
+                            try {
+                                if (typeof sound._node.bufferSource.stop === 'undefined') {
+                                    sound._node.bufferSource.noteOff(0);
+                                } else {
+                                    sound._node.bufferSource.stop(0);
+                                }
+                            } catch(err) {
+                                // bufferSource not yet started.
                             }
+                          
 
                             // Clean up the buffer source.
                             self._cleanBuffer(sound._node);
@@ -1154,10 +1218,14 @@
                         if (self._webAudio) {
                             // Make sure the sound's AudioBufferSourceNode has been created.
                             if (sound._node.bufferSource) {
-                                if (typeof sound._node.bufferSource.stop === 'undefined') {
-                                    sound._node.bufferSource.noteOff(0);
-                                } else {
-                                    sound._node.bufferSource.stop(0);
+                                try {
+                                    if (typeof sound._node.bufferSource.stop === 'undefined') {
+                                        sound._node.bufferSource.noteOff(0);
+                                    } else {
+                                        sound._node.bufferSource.stop(0);
+                                    }
+                                } catch(err) {
+                                    // buffersource not yet started
                                 }
                                 var attemptsGiven = 200;
                                 var interval = setInterval(function() {
@@ -1795,7 +1863,12 @@
             for (var i=0; i<sounds.length; i++) {
                 // Stop the sound if it is currently playing.
                 if (!sounds[i]._paused) {
-                    self.stop(sounds[i]._id);
+                    try {
+                        self.stop(sounds[i]._id);
+                    } catch(err) {
+                        // self not yet started
+                    }
+                  
                 }
 
                 // Remove the source or disconnect.
@@ -2010,7 +2083,12 @@
 
             // Restart the playback for HTML5 Audio loop.
             if (!self._webAudio && loop) {
-                self.stop(sound._id, true).play(sound._id);
+                try {
+                    self.stop(sound._id, true).play(sound._id);
+                } catch(err) {
+                    // not yet started
+                }
+         
             }
 
             // Restart this timer if on a Web Audio loop.
@@ -2041,7 +2119,12 @@
 
             // When using a sprite, end the track.
             if (!self._webAudio && !loop) {
-                self.stop(sound._id, true);
+                try {
+                    self.stop(sound._id, true);
+                } catch(err) {
+                    // not yet started
+                }
+            
             }
 
             return self;
@@ -2257,6 +2340,7 @@
             self._loop = parent._loop;
             self._volume = parent._volume;
             self._rate = parent._rate;
+            self._beats = parent._beats;
             self._seek = 0;
             self._paused = true;
             self._ended = true;
@@ -2336,6 +2420,7 @@
             self._loop = parent._loop;
             self._volume = parent._volume;
             self._rate = parent._rate;
+            self._beats = parent._beats;
             self._seek = 0;
             self._rateSeek = 0;
             self._paused = true;
@@ -2431,6 +2516,7 @@
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
             xhr.withCredentials = self._xhrWithCredentials;
+            xhr.setRequestHeader('Authorization','Bearer '+ window.localStorage.getItem('auth2AccessToken'));
             xhr.responseType = 'arraybuffer';
             xhr.onload = function() {
                 // Make sure we get a successful response back.
@@ -2489,7 +2575,7 @@
                         self._cachedPreVocodedBuffer = buffer;
                         loadSound(self, buffer);
                     } else {
-                        WAAPlayer(buffer, 2048, 4096, self._rate, self._pitchShift).then(function(waaBuffer) {
+                        WAAPlayer(buffer, 2048, 4096, self._rate, self._pitchShift, self._beats).then(function(waaBuffer) {
                             cache[self._src] = {main: buffer, vocoder: waaBuffer};
                             self._cachedBuffer = buffer;
                             self._cachedPreVocodedBuffer = waaBuffer;

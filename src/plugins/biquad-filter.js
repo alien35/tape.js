@@ -12,6 +12,9 @@
 
 
 (function() {
+
+  var id = 1000;  
+
   var TpBiquadFilterNode = function(o) {
     this.init(o);
   };
@@ -60,6 +63,9 @@
   EqThree.prototype = {
       init: function (o) {
           var self = this;
+
+          self.id = 'eq-' + id ++;
+
           var gainDb = -40.0;
           var bandSplit = [360, 3600];
 

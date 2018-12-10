@@ -83,9 +83,9 @@
       Object.keys(bufferSources).forEach(function(key) {
         var obj = bufferSources[key];
         obj.clipGain.gain.value = 1;
-        obj.start(obj.startTime, obj.offset, obj.duration);
+      
         if (obj.fadeLeft > 0) {
-          obj.clipGain.gain.setValueAtTime(0, 0);
+          obj.clipGain.gain.setValueAtTime(0, obj.startTime);
             var waveArray = new Float32Array(19);
             waveArray[0] = 0.0;
             waveArray[1] = 0.00724;
@@ -108,8 +108,11 @@
             waveArray[18] = 0.9901;
             waveArray[19] = 0.9988;
             waveArray[20] = 1;
-            obj.clipGain.gain.setValueCurveAtTime(waveArray, 0.01, obj.fadeLeft);
+            obj.clipGain.gain.setValueCurveAtTime(waveArray, obj.startTime, obj.fadeLeft);
+        } else {
+          obj.clipGain.gain.setValueAtTime(1, obj.startTime);
         }
+        obj.start(obj.startTime, obj.offset, obj.duration);
         if (obj.fadeRight > 0) {
             var waveArrayBackwards = new Float32Array(19);
             waveArrayBackwards[0] = 1;
