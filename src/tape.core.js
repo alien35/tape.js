@@ -2516,7 +2516,7 @@
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
             xhr.withCredentials = self._xhrWithCredentials;
-            xhr.setRequestHeader('Authorization','Bearer '+ window.localStorage.getItem('auth2AccessToken'));
+            // TODO: MAKE THIS A SPECIAL FILE TYPE xhr.setRequestHeader('Authorization','Bearer '+ window.localStorage.getItem('auth2AccessToken'));
             xhr.responseType = 'arraybuffer';
             xhr.onload = function() {
                 // Make sure we get a successful response back.
