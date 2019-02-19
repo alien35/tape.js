@@ -2,15 +2,8 @@
  *  TapeMachine.js v2.0.15
  *  TapeMachinejs.com
  *
- *  (c) 2013-2018, James Simpson of GoldFire Studios
- *  goldfirestudios.com
- *
  *  MIT License
  */
-
-// vocoder: time shifted
-// pitched: pitch shifted
-
 
 (function() {
 
